@@ -66,9 +66,13 @@ def convert_md_to_html(markdown_text):
             if in_ol:
                 new_lines.append('</ol>')
                 in_ol = False
-            # 转换段落
+            # 转换段落（跳过公式行和已经是HTML标签的行）
             if line.strip() and not line.strip().startswith('<'):
-                new_lines.append('<p>' + line.strip() + '</p>')
+                # 如果是公式行（$$开头或包含行内公式），不要包裹在<p>中
+                if line.strip().startswith('$$') or (line.strip().endswith('$$') and line.strip().startswith('$$')):
+                    new_lines.append(line.strip())
+                else:
+                    new_lines.append('<p>' + line.strip() + '</p>')
             else:
                 new_lines.append(line)
 
@@ -133,8 +137,9 @@ def create_chapter_html(chapter_info, base_dir=''):
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} - 构建统一的世界观</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -178,6 +183,17 @@ def create_chapter_html(chapter_info, base_dir=''):
             if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {{
                 sidebar.classList.remove('active');
             }}
+        }});
+
+        // KaTeX 自动渲染
+        document.addEventListener("DOMContentLoaded", function() {{
+            renderMathInElement(document.body, {{
+                delimiters: [
+                    {{left: '$$', right: '$$', display: true}},
+                    {{left: '$', right: '$', display: false}}
+                ],
+                throwOnError: false
+            }});
         }});
     </script>
 </body>

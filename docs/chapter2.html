@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第2章 时间、逻辑、因果 - 构建统一的世界观</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -78,7 +79,7 @@
 </ul>
 
 <strong>薛定谔方程</strong>（量子力学）：
-<p>$$i\hbar \frac{\partial \psi}{\partial t} = \hat{H} \psi$$</p>
+$$i\hbar \frac{\partial \psi}{\partial t} = \hat{H} \psi$$
 <ul>
 <li>将$t \to -t$，方程变为$-i\hbar \frac{\partial \psi}{\partial t} = \hat{H} \psi$</li>
 <li>等价于取复共轭（仍是有效的量子演化）</li>
@@ -102,7 +103,7 @@
 <strong>熵的定义</strong>：
 
 <strong>统计力学</strong>（Boltzmann, 1877）：
-<p>$$S = k_B \ln \Omega$$</p>
+$$S = k_B \ln \Omega$$
 <ul>
 <li>$S$：熵</li>
 <li>$k_B$：Boltzmann常数（$1.38 \times 10^{-23}$ J/K）</li>
@@ -293,11 +294,11 @@
 <strong>推理规则</strong>：
 
 <strong>肯定前件</strong>（Modus Ponens）：
-<p>$$\frac{P, \quad P \to Q}{Q}$$</p>
+$$\frac{P, \quad P \to Q}{Q}$$
 <p>（如果P为真，且P蕴含Q，则Q为真）</p>
 
 <strong>否定后件</strong>（Modus Tollens）：
-<p>$$\frac{\neg Q, \quad P \to Q}{\neg P}$$</p>
+$$\frac{\neg Q, \quad P \to Q}{\neg P}$$
 <p>（如果Q为假，且P蕴含Q，则P为假）</p>
 
 <strong>命题逻辑的完备性</strong>：
@@ -329,8 +330,8 @@
 <strong>一阶逻辑</strong>：$\exists x \, (\text{Prime}(x) \land x > 100)$
 
 <strong>量词的否定</strong>：
-<p>$$\neg \forall x \, P(x) \equiv \exists x \, \neg P(x)$$</p>
-<p>$$\neg \exists x \, P(x) \equiv \forall x \, \neg P(x)$$</p>
+$$\neg \forall x \, P(x) \equiv \exists x \, \neg P(x)$$
+$$\neg \exists x \, P(x) \equiv \forall x \, \neg P(x)$$
 
 <strong>例子</strong>：
 <ul>
@@ -363,7 +364,7 @@
 </ul>
 
 <strong>关系</strong>：
-<p>$$\Diamond P \equiv \neg \Box \neg P$$</p>
+$$\Diamond P \equiv \neg \Box \neg P$$
 <p>（"P可能"等价于"非P不是必然的"）</p>
 
 <strong>公理系统</strong>（Kripke语义，1963）：
@@ -459,7 +460,7 @@
 <strong>例子</strong>：
 
 <strong>简单因果链</strong>：
-<p>$$\text{吸烟} \to \text{焦油沉积} \to \text{肺癌}$$</p>
+$$\text{吸烟} \to \text{焦油沉积} \to \text{肺癌}$$
 
 <strong>共同原因</strong>（Confounding）：
 <p>``<code></p>
@@ -490,7 +491,7 @@
 </ul>
 
 <strong>因果效应的定义</strong>：
-<p>$$\text{因果效应} = P(Y | \text{do}(X=1)) - P(Y | \text{do}(X=0))$$</p>
+$$\text{因果效应} = P(Y | \text{do}(X=1)) - P(Y | \text{do}(X=0))$$
 
 <strong>实验 vs 观察</strong>：
 <ul>
@@ -509,7 +510,7 @@
 <blockquote>- <strong>反事实</strong>：如果C未发生，E也不会发生</blockquote>
 
 <strong>形式化</strong>（模态逻辑）：
-<p>$$C \to E \equiv (C \square\to E)$$</p>
+$$C \to E \equiv (C \square\to E)$$
 <p>（"如果C则E"用<strong>反事实蕴含</strong>表达）</p>
 
 <strong>可能世界语义</strong>：
@@ -594,7 +595,7 @@
 
 <strong>Claude Shannon</strong>（1948）提出<strong>信息熵</strong>（Information Entropy）：
 
-<p>$$H(X) = -\sum_i p_i \log_2 p_i$$</p>
+$$H(X) = -\sum_i p_i \log_2 p_i$$
 
 <ul>
 <li>$X$：随机变量（如"明天天气"）</li>
@@ -605,13 +606,13 @@
 <strong>例子</strong>：
 
 <strong>抛硬币</strong>（均匀分布）：
-<p>$$H = -\left( \frac{1}{2} \log_2 \frac{1}{2} + \frac{1}{2} \log_2 \frac{1}{2} \right) = 1 \text{ bit}$$</p>
+$$H = -\left( \frac{1}{2} \log_2 \frac{1}{2} + \frac{1}{2} \log_2 \frac{1}{2} \right) = 1 \text{ bit}$$
 
 <strong>确定性事件</strong>（如"太阳从东方升起"）：
-<p>$$H = -1 \cdot \log_2 1 = 0 \text{ bit}$$</p>
+$$H = -1 \cdot \log_2 1 = 0 \text{ bit}$$
 
 <strong>互信息</strong>（Mutual Information）：
-<p>$$I(X; Y) = H(X) + H(Y) - H(X, Y)$$</p>
+$$I(X; Y) = H(X) + H(Y) - H(X, Y)$$
 <ul>
 <li>度量$X$和$Y$的<strong>共享信息</strong></li>
 <li>如果$X$和$Y$独立 → $I(X; Y) = 0$</li>
@@ -852,6 +853,17 @@
             if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
                 sidebar.classList.remove('active');
             }
+        });
+
+        // KaTeX 自动渲染
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
         });
     </script>
 </body>

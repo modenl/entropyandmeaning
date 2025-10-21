@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第3章 数学与物理 - 构建统一的世界观</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -49,7 +50,7 @@
 <strong>三个经典例子</strong>：
 
 <strong>1. Newton的万有引力定律</strong>（1687）：
-<p>$$F = G \frac{m_1 m_2}{r^2}$$</p>
+$$F = G \frac{m_1 m_2}{r^2}$$
 <ul>
 <li><strong>简单的数学公式</strong>：平方反比</li>
 <li><strong>解释</strong>：行星轨道、潮汐、彗星、双星系统、星系运动</li>
@@ -57,7 +58,7 @@
 </ul>
 
 <strong>2. Maxwell方程组</strong>（1865）：
-<p>$$\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}, \quad \nabla \times \mathbf{B} - \frac{1}{c^2}\frac{\partial \mathbf{E}}{\partial t} = \mu_0 \mathbf{J}$$</p>
+$$\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}, \quad \nabla \times \mathbf{B} - \frac{1}{c^2}\frac{\partial \mathbf{E}}{\partial t} = \mu_0 \mathbf{J}$$
 <ul>
 <li><strong>预测</strong>：电磁波以光速$c$传播</li>
 <li><strong>验证</strong>：Hertz（1887）实验证实无线电波</li>
@@ -65,7 +66,7 @@
 </ul>
 
 <strong>3. Dirac方程</strong>（1928）：
-<p>$$\left( i\hbar \gamma^\mu \partial_\mu - mc \right) \psi = 0$$</p>
+$$\left( i\hbar \gamma^\mu \partial_\mu - mc \right) \psi = 0$$
 <ul>
 <li><strong>预测</strong>：必然存在<strong>反物质</strong>（负能解）</li>
 <li><strong>验证</strong>：1932年发现正电子（Anderson）</li>
@@ -183,9 +184,9 @@
 <strong>形式化</strong>（分析力学）：
 
 <p>设系统的Lagrangian为$L(q_i, \dot{q}_i, t)$，如果存在连续变换：</p>
-<p>$$q_i \to q_i + \epsilon \delta q_i$$</p>
+$$q_i \to q_i + \epsilon \delta q_i$$
 <p>使得$L$不变（或至多相差全导数），则存在守恒量：</p>
-<p>$$Q = \sum_i \frac{\partial L}{\partial \dot{q}_i} \delta q_i$$</p>
+$$Q = \sum_i \frac{\partial L}{\partial \dot{q}_i} \delta q_i$$
 
 <h3>3.2.2 三大守恒律的推导</h3>
 
@@ -194,18 +195,18 @@
 <strong>假设</strong>：$L$不显含时间（$\frac{\partial L}{\partial t} = 0$）
 <strong>对称变换</strong>：$t \to t + \epsilon$
 <strong>守恒量</strong>（Hamiltonian）：
-<p>$$H = \sum_i \dot{q}_i \frac{\partial L}{\partial \dot{q}_i} - L$$</p>
+$$H = \sum_i \dot{q}_i \frac{\partial L}{\partial \dot{q}_i} - L$$
 <strong>物理意义</strong>：总能量
 
 <strong>推导</strong>：
-<p>$$\frac{dH}{dt} = \frac{\partial L}{\partial t} = 0 \quad \Rightarrow \quad H = \text{const}$$</p>
+$$\frac{dH}{dt} = \frac{\partial L}{\partial t} = 0 \quad \Rightarrow \quad H = \text{const}$$
 
 <strong>2. 动量守恒 ← 空间平移对称</strong>
 
 <strong>假设</strong>：$L$不显含位置（$\frac{\partial L}{\partial \mathbf{r}} = 0$，如自由粒子）
 <strong>对称变换</strong>：$\mathbf{r} \to \mathbf{r} + \epsilon \mathbf{a}$
 <strong>守恒量</strong>：
-<p>$$\mathbf{p} = \frac{\partial L}{\partial \dot{\mathbf{r}}} = m \dot{\mathbf{r}}$$</p>
+$$\mathbf{p} = \frac{\partial L}{\partial \dot{\mathbf{r}}} = m \dot{\mathbf{r}}$$
 <strong>物理意义</strong>：线动量
 
 <strong>3. 角动量守恒 ← 旋转对称</strong>
@@ -213,7 +214,7 @@
 <strong>假设</strong>：$L$在旋转下不变（各向同性）
 <strong>对称变换</strong>：$\mathbf{r} \to R(\theta) \mathbf{r}$（绕轴旋转$\theta$）
 <strong>守恒量</strong>：
-<p>$$\mathbf{L} = \mathbf{r} \times \mathbf{p}$$</p>
+$$\mathbf{L} = \mathbf{r} \times \mathbf{p}$$
 <strong>物理意义</strong>：角动量
 
 <h3>3.2.3 更深层的对称性：规范对称</h3>
@@ -223,21 +224,21 @@
 <strong>例子：电磁学的$U(1)$规范对称</strong>
 
 <strong>全局对称</strong>：电子波函数的相位变换
-<p>$$\psi \to e^{i\alpha} \psi \quad (\alpha = \text{常数})$$</p>
+$$\psi \to e^{i\alpha} \psi \quad (\alpha = \text{常数})$$
 <p>这是<strong>全局$U(1)$对称</strong>（电荷守恒）</p>
 
 <strong>局域对称</strong>：相位在每个时空点不同
-<p>$$\psi(x) \to e^{i\alpha(x)} \psi(x)$$</p>
+$$\psi(x) \to e^{i\alpha(x)} \psi(x)$$
 
 <strong>问题</strong>：导数项$\partial_\mu \psi$不对称！
-<p>$$\partial_\mu \psi \to e^{i\alpha} \partial_\mu \psi + i (\partial_\mu \alpha) e^{i\alpha} \psi$$</p>
+$$\partial_\mu \psi \to e^{i\alpha} \partial_\mu \psi + i (\partial_\mu \alpha) e^{i\alpha} \psi$$
 <p>（多了一项）</p>
 
 <strong>解决</strong>：引入<strong>规范场</strong>$A_\mu$（电磁场），定义<strong>协变导数</strong>：
-<p>$$D_\mu = \partial_\mu - ieA_\mu$$</p>
+$$D_\mu = \partial_\mu - ieA_\mu$$
 
 <p>要求$D_\mu \psi$在规范变换下协变：</p>
-<p>$$A_\mu \to A_\mu + \frac{1}{e} \partial_\mu \alpha$$</p>
+$$A_\mu \to A_\mu + \frac{1}{e} \partial_\mu \alpha$$
 
 <strong>结果</strong>：
 <ol>
@@ -256,7 +257,7 @@
 
 <strong>粒子物理标准模型</strong>的所有相互作用由以下规范群决定：
 
-<p>$$G_{\text{SM}} = SU(3)_C \times SU(2)_L \times U(1)_Y$$</p>
+$$G_{\text{SM}} = SU(3)_C \times SU(2)_L \times U(1)_Y$$
 
 <strong>各群的物理意义</strong>：
 
@@ -288,7 +289,7 @@
 <li>颜色空间是3维复向量空间$\mathbb{C}^3$</li>
 <li><strong>对称性</strong>：物理定律在$SU(3)$变换下不变</li>
 </ul>
-<p>$$\begin{pmatrix} q_r \\ q_g \\ q_b \end{pmatrix} \to U \begin{pmatrix} q_r \\ q_g \\ q_b \end{pmatrix}, \quad U \in SU(3)$$</p>
+$$\begin{pmatrix} q_r \\ q_g \\ q_b \end{pmatrix} \to U \begin{pmatrix} q_r \\ q_g \\ q_b \end{pmatrix}, \quad U \in SU(3)$$
 
 <strong>规范玻色子</strong>：
 <ul>
@@ -344,7 +345,7 @@
 </ul>
 
 <strong>结果</strong>：
-<p>$$\begin{aligned}</p>
+$$\begin{aligned}
 <p>W^\pm &= \frac{1}{\sqrt{2}} (W^1 \mp i W^2) \quad &\text{获得质量} \sim 80 \text{ GeV} \\</p>
 <p>Z^0 &= \cos\theta_W W^3 - \sin\theta_W B^0 \quad &\text{获得质量} \sim 91 \text{ GeV} \\</p>
 <p>\gamma &= \sin\theta_W W^3 + \cos\theta_W B^0 \quad &\text{质量为0（光子）}</p>
@@ -394,7 +395,7 @@
 <li>要求一阶导数（时间和空间都是）</li>
 <li><strong>唯一形式</strong>：</li>
 </ol>
-<p>$$\left( i\hbar \gamma^\mu \partial_\mu - mc \right) \psi = 0$$</p>
+$$\left( i\hbar \gamma^\mu \partial_\mu - mc \right) \psi = 0$$
 <p>其中$\gamma^\mu$是<strong>Dirac矩阵</strong>（满足Clifford代数）</p>
 
 <strong>意外推论</strong>：
@@ -515,7 +516,7 @@
 
 <p>用$c$, $\hbar$, $G$构造基本单位：</p>
 
-<p>$$\begin{aligned}</p>
+$$\begin{aligned}
 <p>\text{Planck长度：} & \quad l_P = \sqrt{\frac{\hbar G}{c^3}} \approx 1.6 \times 10^{-35} \text{ m} \\</p>
 <p>\text{Planck时间：} & \quad t_P = \frac{l_P}{c} \approx 5.4 \times 10^{-44} \text{ s} \\</p>
 <p>\text{Planck质量：} & \quad m_P = \sqrt{\frac{\hbar c}{G}} \approx 2.2 \times 10^{-8} \text{ kg} \\</p>
@@ -535,7 +536,7 @@
 <strong>无量纲常数</strong>（如$\alpha$）：<strong>不能</strong>通过单位选择消除，反映物理的<strong>真实结构</strong>
 
 <strong>精细结构常数</strong>：
-<p>$$\alpha = \frac{e^2}{4\pi\epsilon_0 \hbar c} \approx \frac{1}{137.036}$$</p>
+$$\alpha = \frac{e^2}{4\pi\epsilon_0 \hbar c} \approx \frac{1}{137.036}$$
 
 <ul>
 <li><strong>物理意义</strong>：电磁相互作用强度</li>
@@ -747,6 +748,17 @@
             if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
                 sidebar.classList.remove('active');
             }
+        });
+
+        // KaTeX 自动渲染
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
         });
     </script>
 </body>
