@@ -114,10 +114,14 @@ def convert_md_to_html(markdown_text):
             # 检查是否应该关闭列表
             should_close_lists = False
             if not stripped:
-                # 空行 - 只关闭嵌套的ul，不关闭外层的ol和ul
+                # 空行 - 关闭嵌套的ul，也关闭外层的ul（但不关闭ol以保持编号连续）
                 if in_nested_ul:
                     new_lines.append('</ul>')
                     in_nested_ul = False
+                if in_ul:
+                    new_lines.append('</ul>')
+                    in_ul = False
+                # 不关闭 in_ol，保持有序列表编号连续
                 new_lines.append(line)
             elif stripped and not is_indented and not stripped.startswith('<'):
                 # 非缩进的内容行（可能是标题或段落）
