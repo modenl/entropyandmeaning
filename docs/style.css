@@ -215,10 +215,12 @@ body {
     border-radius: 6px;
     overflow-x: auto;
     margin: 25px 0;
-    font-family: 'Courier New', 'Consolas', 'Monaco', monospace;
-    font-size: 0.95em;
+    font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', 'Courier New', 'DejaVu Sans Mono', monospace;
+    font-size: 15px;
     line-height: 1.6;
-    white-space: pre;
+    white-space: pre-wrap;
+    letter-spacing: 0;
+    word-spacing: 0;
 }
 
 .chapter-content pre code {
