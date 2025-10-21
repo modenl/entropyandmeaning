@@ -36,6 +36,17 @@ def convert_md_to_html(markdown_text):
 
     html = re.sub(r'```\n(.*?)\n```', save_code_block, html, flags=re.DOTALL)
 
+    # 步骤1.5: 提取并保护多行数学公式环境（如aligned, cases等）
+    math_blocks = []
+    def save_math_block(match):
+        math_content = match.group(0)  # 保留整个$$...$$块
+        placeholder = f'___MATH_BLOCK_{len(math_blocks)}___'
+        math_blocks.append(math_content)
+        return placeholder
+
+    # 匹配$$开头到$$结尾的多行公式（包含\begin或其他多行环境）
+    html = re.sub(r'\$\$\s*\\begin\{[^}]+\}.*?\\end\{[^}]+\}\s*\$\$', save_math_block, html, flags=re.DOTALL)
+
     # 步骤2: 转换标题
     html = re.sub(r'^# (.+)$', r'<h1>\1</h1>', html, flags=re.MULTILINE)
     html = re.sub(r'^## (.+)$', r'<h2>\1</h2>', html, flags=re.MULTILINE)
@@ -135,7 +146,8 @@ def convert_md_to_html(markdown_text):
                 # 转换段落
                 if (stripped.startswith('$$') or
                     (stripped.endswith('$$') and stripped.startswith('$$')) or
-                    '___CODE_BLOCK_' in stripped):
+                    '___CODE_BLOCK_' in stripped or
+                    '___MATH_BLOCK_' in stripped):
                     new_lines.append(stripped)
                 elif not (in_ul or in_ol or in_nested_ul):
                     new_lines.append('<p>' + stripped + '</p>')
@@ -153,7 +165,12 @@ def convert_md_to_html(markdown_text):
 
     html = '\n'.join(new_lines)
 
-    # 步骤3: 还原代码块（将空格转换为&nbsp;以保证对齐）
+    # 步骤3: 还原数学块（保持原样，让KaTeX渲染）
+    for i, math_content in enumerate(math_blocks):
+        placeholder = f'___MATH_BLOCK_{i}___'
+        html = html.replace(placeholder, math_content)
+
+    # 步骤4: 还原代码块（将空格转换为&nbsp;以保证对齐）
     for i, code_content in enumerate(code_blocks):
         placeholder = f'___CODE_BLOCK_{i}___'
         # 将空格转换为&nbsp;，保留换行符
