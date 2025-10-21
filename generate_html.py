@@ -26,7 +26,17 @@ def convert_md_to_html(markdown_text):
     """简单的markdown到HTML转换"""
     html = markdown_text
 
-    # 转换标题
+    # 步骤1: 提取并保护代码块
+    code_blocks = []
+    def save_code_block(match):
+        code_content = match.group(1)
+        placeholder = f'___CODE_BLOCK_{len(code_blocks)}___'
+        code_blocks.append(code_content)
+        return placeholder
+
+    html = re.sub(r'```\n(.*?)\n```', save_code_block, html, flags=re.DOTALL)
+
+    # 步骤2: 转换标题
     html = re.sub(r'^# (.+)$', r'<h1>\1</h1>', html, flags=re.MULTILINE)
     html = re.sub(r'^## (.+)$', r'<h2>\1</h2>', html, flags=re.MULTILINE)
     html = re.sub(r'^### (.+)$', r'<h3>\1</h3>', html, flags=re.MULTILINE)
@@ -39,7 +49,7 @@ def convert_md_to_html(markdown_text):
     html = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', html)
     html = re.sub(r'\*(.+?)\*', r'<em>\1</em>', html)
 
-    # 转换代码
+    # 转换行内代码（单反引号）
     html = re.sub(r'`([^`]+)`', r'<code>\1</code>', html)
 
     # 转换列表（简化版本）
@@ -66,10 +76,12 @@ def convert_md_to_html(markdown_text):
             if in_ol:
                 new_lines.append('</ol>')
                 in_ol = False
-            # 转换段落（跳过公式行和已经是HTML标签的行）
+            # 转换段落（跳过公式行、代码块占位符和已经是HTML标签的行）
             if line.strip() and not line.strip().startswith('<'):
-                # 如果是公式行（$$开头或包含行内公式），不要包裹在<p>中
-                if line.strip().startswith('$$') or (line.strip().endswith('$$') and line.strip().startswith('$$')):
+                # 跳过公式行和代码块占位符
+                if (line.strip().startswith('$$') or
+                    (line.strip().endswith('$$') and line.strip().startswith('$$')) or
+                    '___CODE_BLOCK_' in line.strip()):
                     new_lines.append(line.strip())
                 else:
                     new_lines.append('<p>' + line.strip() + '</p>')
@@ -81,7 +93,14 @@ def convert_md_to_html(markdown_text):
     if in_ol:
         new_lines.append('</ol>')
 
-    return '\n'.join(new_lines)
+    html = '\n'.join(new_lines)
+
+    # 步骤3: 还原代码块
+    for i, code_content in enumerate(code_blocks):
+        placeholder = f'___CODE_BLOCK_{i}___'
+        html = html.replace(placeholder, f'<pre><code>{code_content}</code></pre>')
+
+    return html
 
 def get_toc_item(chapter_id, current_id, title, link):
     """生成目录项"""
