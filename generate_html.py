@@ -52,42 +52,100 @@ def convert_md_to_html(markdown_text):
     # 转换行内代码（单反引号）
     html = re.sub(r'`([^`]+)`', r'<code>\1</code>', html)
 
-    # 转换列表（简化版本）
+    # 转换列表（改进版本）
     lines = html.split('\n')
     new_lines = []
     in_ul = False
     in_ol = False
+    in_nested_ul = False
 
-    for line in lines:
-        if line.strip().startswith('- '):
-            if not in_ul:
-                new_lines.append('<ul>')
-                in_ul = True
-            new_lines.append('<li>' + line.strip()[2:] + '</li>')
-        elif re.match(r'^\d+\. ', line.strip()):
-            if not in_ol:
-                new_lines.append('<ol>')
-                in_ol = True
-            new_lines.append('<li>' + re.sub(r'^\d+\. ', '', line.strip()) + '</li>')
-        else:
-            if in_ul:
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        is_indented = line.startswith('   ')  # 3个或更多空格表示嵌套
+
+        if stripped.startswith('- '):
+            # 无序列表项
+            if is_indented:
+                # 嵌套的无序列表
+                if not in_nested_ul:
+                    new_lines.append('<ul>')
+                    in_nested_ul = True
+                new_lines.append('<li>' + stripped[2:] + '</li>')
+            else:
+                # 顶层无序列表
+                if in_nested_ul:
+                    new_lines.append('</ul>')
+                    in_nested_ul = False
+                if in_ol:
+                    new_lines.append('</ol>')
+                    in_ol = False
+                if not in_ul:
+                    new_lines.append('<ul>')
+                    in_ul = True
+                new_lines.append('<li>' + stripped[2:] + '</li>')
+        elif re.match(r'^\d+\. ', stripped):
+            # 有序列表项（保持连续编号，不重新开始）
+            if in_nested_ul:
+                new_lines.append('</ul>')
+                in_nested_ul = False
+            if in_ul and not in_ol:
+                # 如果之前是无序列表但不是在有序列表中，关闭它
                 new_lines.append('</ul>')
                 in_ul = False
-            if in_ol:
-                new_lines.append('</ol>')
-                in_ol = False
-            # 转换段落（跳过公式行、代码块占位符和已经是HTML标签的行）
-            if line.strip() and not line.strip().startswith('<'):
-                # 跳过公式行和代码块占位符
-                if (line.strip().startswith('$$') or
-                    (line.strip().endswith('$$') and line.strip().startswith('$$')) or
-                    '___CODE_BLOCK_' in line.strip()):
-                    new_lines.append(line.strip())
+            if not in_ol:
+                # 只有第一次遇到有序列表时才打开<ol>
+                new_lines.append('<ol>')
+                in_ol = True
+            # 继续在同一个<ol>中添加<li>
+            new_lines.append('<li>' + re.sub(r'^\d+\. ', '', stripped) + '</li>')
+        else:
+            # 非列表行
+            # 检查是否应该关闭列表
+            should_close_lists = False
+            if not stripped:
+                # 空行 - 只关闭嵌套的ul，不关闭外层的ol和ul
+                if in_nested_ul:
+                    new_lines.append('</ul>')
+                    in_nested_ul = False
+                new_lines.append(line)
+            elif stripped and not is_indented and not stripped.startswith('<'):
+                # 非缩进的内容行（可能是标题或段落）
+                # 只有当真正遇到非列表内容时才关闭所有列表
+                # 检查下一行是否还是列表
+                next_is_list = False
+                if i + 1 < len(lines):
+                    next_stripped = lines[i + 1].strip()
+                    if next_stripped.startswith('-') or re.match(r'^\d+\.', next_stripped):
+                        next_is_list = True
+
+                if not next_is_list:
+                    should_close_lists = True
+
+                if should_close_lists:
+                    if in_nested_ul:
+                        new_lines.append('</ul>')
+                        in_nested_ul = False
+                    if in_ul:
+                        new_lines.append('</ul>')
+                        in_ul = False
+                    if in_ol:
+                        new_lines.append('</ol>')
+                        in_ol = False
+
+                # 转换段落
+                if (stripped.startswith('$$') or
+                    (stripped.endswith('$$') and stripped.startswith('$$')) or
+                    '___CODE_BLOCK_' in stripped):
+                    new_lines.append(stripped)
+                elif not (in_ul or in_ol or in_nested_ul):
+                    new_lines.append('<p>' + stripped + '</p>')
                 else:
-                    new_lines.append('<p>' + line.strip() + '</p>')
+                    new_lines.append(line)
             else:
                 new_lines.append(line)
 
+    if in_nested_ul:
+        new_lines.append('</ul>')
     if in_ul:
         new_lines.append('</ul>')
     if in_ol:
