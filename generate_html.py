@@ -95,10 +95,12 @@ def convert_md_to_html(markdown_text):
 
     html = '\n'.join(new_lines)
 
-    # 步骤3: 还原代码块
+    # 步骤3: 还原代码块（将空格转换为&nbsp;以保证对齐）
     for i, code_content in enumerate(code_blocks):
         placeholder = f'___CODE_BLOCK_{i}___'
-        html = html.replace(placeholder, f'<pre><code>{code_content}</code></pre>')
+        # 将空格转换为&nbsp;，保留换行符
+        code_with_nbsp = code_content.replace(' ', '&nbsp;')
+        html = html.replace(placeholder, f'<pre><code>{code_with_nbsp}</code></pre>')
 
     return html
 
