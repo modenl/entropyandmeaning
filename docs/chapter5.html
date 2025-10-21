@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第5章 复杂性与涌现 - 构建统一的世界观</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -193,8 +194,8 @@
 </ol>
 
 <strong>数学模型</strong>（Brusselator）：
-<p>$$\frac{dX}{dt} = A + X^2 Y - (B+1)X$$</p>
-<p>$$\frac{dY}{dt} = BX - X^2 Y$$</p>
+$$\frac{dX}{dt} = A + X^2 Y - (B+1)X$$
+$$\frac{dY}{dt} = BX - X^2 Y$$
 
 <ul>
 <li>$X$, $Y$：反应物浓度</li>
@@ -222,7 +223,7 @@
 <strong>Edward Lorenz</strong>（1963）：研究天气预报的数学模型
 
 <strong>简化的大气对流方程</strong>：
-<p>$$\begin{aligned}</p>
+$$\begin{aligned}
 <p>\frac{dx}{dt} &= \sigma(y - x) \\</p>
 <p>\frac{dy}{dt} &= x(\rho - z) - y \\</p>
 <p>\frac{dz}{dt} &= xy - \beta z</p>
@@ -304,7 +305,7 @@
 </ul>
 
 <strong>分形维数</strong>（Hausdorff dimension）：
-<p>$$d = \lim_{\epsilon \to 0} \frac{\ln N(\epsilon)}{\ln(1/\epsilon)}$$</p>
+$$d = \lim_{\epsilon \to 0} \frac{\ln N(\epsilon)}{\ln(1/\epsilon)}$$
 <ul>
 <li>$N(\epsilon)$：覆盖对象所需的$\epsilon$大小的球数</li>
 </ul>
@@ -321,7 +322,7 @@
 <strong>Feigenbaum常数</strong>（Mitchell Feigenbaum, 1975）：
 
 <p>研究<strong>简单映射</strong>（如Logistic map）：</p>
-<p>$$x_{n+1} = r x_n (1 - x_n)$$</p>
+$$x_{n+1} = r x_n (1 - x_n)$$
 
 <strong>参数$r$的增加</strong>：
 
@@ -336,7 +337,7 @@
 <ul>
 <li>周期倍增的间隔以<strong>恒定比例</strong>缩小：</li>
 </ul>
-<p>$$\delta = \lim_{n \to \infty} \frac{r_n - r_{n-1}}{r_{n+1} - r_n} \approx 4.669$$</p>
+$$\delta = \lim_{n \to \infty} \frac{r_n - r_{n-1}}{r_{n+1} - r_n} \approx 4.669$$
 <ul>
 <li><strong>普适性</strong>：不同系统（物理、生物、化学）的$\delta$值<strong>相同</strong>！</li>
 </ul>
@@ -377,7 +378,7 @@
 </ul>
 
 <strong>幂律</strong>（Power Law）：
-<p>$$P(x) = C x^{-\alpha}$$</p>
+$$P(x) = C x^{-\alpha}$$
 
 <strong>特征</strong>：
 <ul>
@@ -534,21 +535,21 @@
 <strong>涌现的热力学性质</strong>：
 
 <strong>温度</strong>：
-<p>$$T = \left( \frac{\partial S}{\partial E} \right)^{-1}$$</p>
+$$T = \left( \frac{\partial S}{\partial E} \right)^{-1}$$
 <ul>
 <li>微观：分子平均动能</li>
 <li>宏观：涌现的热力学参数</li>
 </ul>
 
 <strong>压强</strong>：
-<p>$$P = -\frac{\partial E}{\partial V}$$</p>
+$$P = -\frac{\partial E}{\partial V}$$
 <ul>
 <li>微观：分子撞击器壁</li>
 <li>宏观：涌现的力学量</li>
 </ul>
 
 <strong>化学势</strong>：
-<p>$$\mu = \frac{\partial E}{\partial N}$$</p>
+$$\mu = \frac{\partial E}{\partial N}$$
 <ul>
 <li>微观：增加一个粒子的能量变化</li>
 <li>宏观：化学反应驱动力</li>
@@ -871,6 +872,17 @@
             if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
                 sidebar.classList.remove('active');
             }
+        });
+
+        // KaTeX 自动渲染
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
         });
     </script>
 </body>

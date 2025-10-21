@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第4章 量子力学 - 构建统一的世界观</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -104,7 +105,7 @@
 <ul>
 <li>如果 $\psi_1$ 和 $\psi_2$ 都是有效的量子态，则它们的<strong>线性组合</strong>也是有效的量子态：</li>
 </ul>
-<p>$$\psi = c_1 \psi_1 + c_2 \psi_2$$</p>
+$$\psi = c_1 \psi_1 + c_2 \psi_2$$
 <ul>
 <li>对于双缝实验：</li>
 <li>$\psi_1$：通过缝1的波函数</li>
@@ -140,7 +141,7 @@
 <strong>量子力学的数学描述</strong>：
 
 <strong>测量前</strong>（叠加态）：
-<p>$$\psi = c_1 |1\rangle + c_2 |2\rangle$$</p>
+$$\psi = c_1 |1\rangle + c_2 |2\rangle$$
 <ul>
 <li>$|1\rangle$：通过缝1的态</li>
 <li>$|2\rangle$：通过缝2的态</li>
@@ -172,14 +173,14 @@
 <p>对于两个粒子A和B，如果它们的量子态<strong>无法写成</strong>单粒子态的直积，则称它们处于<strong>纠缠态</strong>（Entangled State）。</p>
 
 <strong>经典例子</strong>（可分离态）：
-<p>$$\psi_{\text{可分离}} = |0\rangle_A |1\rangle_B$$</p>
+$$\psi_{\text{可分离}} = |0\rangle_A |1\rangle_B$$
 <ul>
 <li>A处于态 $|0\rangle$，B处于态 $|1\rangle$</li>
 <li>两粒子状态独立</li>
 </ul>
 
 <strong>纠缠态例子</strong>（不可分离）：
-<p>$$\psi_{\text{纠缠}} = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B + |1\rangle_A |0\rangle_B \right)$$</p>
+$$\psi_{\text{纠缠}} = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B + |1\rangle_A |0\rangle_B \right)$$
 <ul>
 <li><strong>关键</strong>：无法写成 $\psi_A \otimes \psi_B$ 的形式</li>
 <li>A和B的状态<strong>相互依赖</strong></li>
@@ -267,7 +268,7 @@
 <li><strong>机关</strong>：如果原子衰变 → 打破毒气瓶 → 猫死亡</li>
 <li><strong>问题</strong>：如果整个系统遵循Schrödinger方程，猫应处于叠加态：</li>
 </ul>
-<p>$$\psi_{\text{猫}} = \frac{1}{\sqrt{2}} (|\text{活}\rangle + |\text{死}\rangle)$$</p>
+$$\psi_{\text{猫}} = \frac{1}{\sqrt{2}} (|\text{活}\rangle + |\text{死}\rangle)$$
 
 <p>但我们打开盒子时，<strong>只看到</strong>活猫<strong>或</strong>死猫，从未看到"叠加态的猫"。</p>
 
@@ -290,7 +291,7 @@
 </ul>
 
 <strong>Heisenberg的不确定性原理</strong>：
-<p>$$\Delta x \cdot \Delta p \geq \frac{\hbar}{2}$$</p>
+$$\Delta x \cdot \Delta p \geq \frac{\hbar}{2}$$
 <ul>
 <li>位置 $x$ 和动量 $p$ <strong>不能同时精确测量</strong></li>
 <li><strong>注意</strong>：这不是测量技术的限制，而是量子态的<strong>内禀性质</strong></li>
@@ -333,10 +334,10 @@
 <strong>数学描述</strong>：
 
 <strong>测量前</strong>（系统 + 观察者）：
-<p>$$\psi_{\text{初始}} = \left( c_1 |1\rangle + c_2 |2\rangle \right)_{\text{系统}} \otimes |\text{准备}\rangle_{\text{观察者}}$$</p>
+$$\psi_{\text{初始}} = \left( c_1 |1\rangle + c_2 |2\rangle \right)_{\text{系统}} \otimes |\text{准备}\rangle_{\text{观察者}}$$
 
 <strong>测量后</strong>（无坍缩，只有纠缠）：
-<p>$$\psi_{\text{最终}} = c_1 |1\rangle_{\text{系统}} \otimes |\text{看到1}\rangle_{\text{观察者}} + c_2 |2\rangle_{\text{系统}} \otimes |\text{看到2}\rangle_{\text{观察者}}$$</p>
+$$\psi_{\text{最终}} = c_1 |1\rangle_{\text{系统}} \otimes |\text{看到1}\rangle_{\text{观察者}} + c_2 |2\rangle_{\text{系统}} \otimes |\text{看到2}\rangle_{\text{观察者}}$$
 
 <strong>关键</strong>：
 <ul>
@@ -391,16 +392,16 @@
 <strong>数学模型</strong>：
 
 <p>假设系统S处于叠加态，环境E初始为 $|E_0\rangle$：</p>
-<p>$$\psi_{\text{初始}} = \left( c_1 |1\rangle_S + c_2 |2\rangle_S \right) \otimes |E_0\rangle_E$$</p>
+$$\psi_{\text{初始}} = \left( c_1 |1\rangle_S + c_2 |2\rangle_S \right) \otimes |E_0\rangle_E$$
 
 <p>与环境相互作用后：</p>
-<p>$$\psi_{\text{最终}} = c_1 |1\rangle_S \otimes |E_1\rangle_E + c_2 |2\rangle_S \otimes |E_2\rangle_E$$</p>
+$$\psi_{\text{最终}} = c_1 |1\rangle_S \otimes |E_1\rangle_E + c_2 |2\rangle_S \otimes |E_2\rangle_E$$
 
 <strong>关键</strong>：如果 $\langle E_1 | E_2 \rangle \approx 0$（环境态几乎正交），则：
 <ul>
 <li><strong>系统的密度矩阵</strong>：</li>
 </ul>
-<p>$$\rho_S = |c_1|^2 |1\rangle\langle 1| + |c_2|^2 |2\rangle\langle 2|$$</p>
+$$\rho_S = |c_1|^2 |1\rangle\langle 1| + |c_2|^2 |2\rangle\langle 2|$$
 <p>（<strong>对角化</strong>，失去相干性）</p>
 <ul>
 <li><strong>交叉项消失</strong>：$c_1 c_2^* |1\rangle\langle 2|$ 变为0</li>
@@ -562,7 +563,7 @@
 <strong>EPR佯谬回顾</strong>：
 
 <p>纠缠态：</p>
-<p>$$\psi = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B + |1\rangle_A |0\rangle_B \right)$$</p>
+$$\psi = \frac{1}{\sqrt{2}} \left( |0\rangle_A |1\rangle_B + |1\rangle_A |0\rangle_B \right)$$
 
 <p>测量A得到0 → B"瞬间"坍缩为1（即使相距光年）</p>
 
@@ -921,6 +922,17 @@
             if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
                 sidebar.classList.remove('active');
             }
+        });
+
+        // KaTeX 自动渲染
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
         });
     </script>
 </body>
