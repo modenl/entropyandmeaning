@@ -352,7 +352,6 @@ mjx-container mjx-math {
 @media (max-width: 720px) {
   .site-shell {
     padding: 14px 18px;
-    /* flex-direction: column; */ /* Changed to row to keep toggle next to brand */
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
@@ -360,21 +359,25 @@ mjx-container mjx-math {
 
   .site-meta {
     flex: 1;
+    min-width: 0; /* Allow shrinking */
   }
 
   .nav-toggle {
     display: block;
+    margin-left: auto; /* Push to right */
   }
 
   .site-nav {
     width: 100%;
-    display: none; /* Hidden by default on mobile */
+    display: none;
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
     padding-top: 12px;
     border-top: 1px solid var(--border);
     margin-top: 8px;
+    background: rgba(255, 255, 255, 0.5); /* Slight background to separate */
+    border-radius: 8px;
   }
 
   .site-nav.is-visible {
@@ -382,8 +385,9 @@ mjx-container mjx-math {
   }
 
   .site-nav a {
-    padding: 10px 14px;
+    padding: 12px 16px;
     text-align: center;
+    background: #fff; /* Ensure buttons are readable */
   }
 
   .page-shell {
