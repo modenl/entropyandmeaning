@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="zh-CN">
-{% assign nav_items = site.html_pages | sort: "path" %}
+{% assign preface_pages = site.html_pages | where_exp: "item", "item.name contains 'Preface'" %}
+{% assign chapter_pages = site.html_pages | where_exp: "item", "item.name contains 'Chapter'" | sort: "path" %}
+{% assign nav_items = preface_pages | concat: chapter_pages %}
 {% assign first_nav_url = nil %}
 {% for p in nav_items %}
   {% if p.url != '/' and first_nav_url == nil %}
@@ -22,30 +24,11 @@
   <script>
     window.MathJax = {
       tex: {
-        inlineMath: [['\\(','\\)'], ['$', '$']],
-        displayMath: [['\\[','\\]'], ['$$','$$']]
+        inlineMath: [['(', ')']],
+        displayMath: [['[', ']']]
       },
       options: {
         skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      startup: {
-        ready: () => {
-          const nodes = document.querySelectorAll('p, li, div');
-          nodes.forEach(node => {
-            if (node.dataset.mathProcessed) return;
-            const text = node.textContent.trim();
-            const looksLikeDisplay = text.startsWith('[') && text.endsWith(']');
-            const containsTeX = text.includes('\\');
-            const isReference = /^\[\d+\]:/.test(text);
-            if (looksLikeDisplay && containsTeX && !isReference) {
-              const inner = text.slice(1, -1).trim();
-              node.innerHTML = `\\[${inner}\\]`;
-              node.dataset.mathProcessed = 'true';
-            }
-          });
-          MathJax.startup.defaultReady();
-          MathJax.typesetPromise();
-        }
       }
     };
   </script>
