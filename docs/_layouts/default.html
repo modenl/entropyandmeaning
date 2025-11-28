@@ -55,36 +55,58 @@
              let textNode;
              const nodesToUpdate = [];
              
+             // Pre-compile regexes for performance
+             // Catch P( ... ) with potential nested parens for do(...)
+             const probRegex = /\(P\(([^()]+(?:\([^()]*\)[^()]*)*)\)\)/g;
+             const uTRegex = /\(U\(t\)\)/g;
+             const hatHRegex = /\(\\hat\{H\}\)/g;
+
              while(textNode = walk.nextNode()) {
-                if (textNode.textContent.match(/\(P\(|U\(t\)|\(\\hat/)) {
-                    nodesToUpdate.push(textNode);
-                }
+                 // Quick check before running heavy regex
+                 if (textNode.textContent.includes('(')) {
+                     if (textNode.textContent.includes('P(') || 
+                         textNode.textContent.includes('U(t)') || 
+                         textNode.textContent.includes('\\hat')) {
+                         nodesToUpdate.push(textNode);
+                     }
+                 }
              }
 
              nodesToUpdate.forEach(node => {
                 let text = node.textContent;
+                let changed = false;
+
+                // Fix P(...)
+                if (probRegex.test(text)) {
+                    text = text.replace(probRegex, (match, inner) => {
+                        // Normalize pipe: handle | and potential entities
+                        // Note: textContent decodes entities, so we likely see '|'
+                        // But just in case, we replace both.
+                        let fixedInner = inner.replace(/\|/g, '\\mid ');
+                        
+                        // Fix do(...) -> \text{do}(...)
+                        fixedInner = fixedInner.replace(/do\(/g, '\\text{do}(');
+                        
+                        return `\\( P(${fixedInner}) \\)`;
+                    });
+                    changed = true;
+                }
                 
-                // Handle probability P(...)
-                // We use a loop to handle multiple occurrences
-                const probabilityRegex = /\(P\(([^()]+(?:\([^()]*\)[^()]*)*)\)\)/g;
-                text = text.replace(probabilityRegex, (match, inner) => {
-                    // Replace | with \mid
-                    let fixedInner = inner.replace(/\|/g, '\\mid ');
-                    // Replace do(X) with \text{do}(X)
-                    fixedInner = fixedInner.replace(/do\(/g, '\\text{do}(');
-                    return `\\( P(${fixedInner}) \\)`;
-                });
+                // Fix U(t)
+                if (uTRegex.test(text)) {
+                    text = text.replace(uTRegex, '\\( U(t) \\)');
+                    changed = true;
+                }
                 
-                // Handle do(...) alone if strictly formatted as (P(Y|do(X))) it's caught above.
-                // But if there are other cases like (do(X))? Unlikely in this text but good to be safe.
-                
-                // Handle U(t)
-                text = text.replace(/\(U\(t\)\)/g, '\\( U(t) \\)');
-                
-                // Handle hat{H}
-                text = text.replace(/\(\\hat\{H\}\)/g, '\\( \\hat{H} \\)');
-                
-                node.textContent = text;
+                // Fix \hat{H}
+                if (hatHRegex.test(text)) {
+                    text = text.replace(hatHRegex, '\\( \\hat{H} \\)');
+                    changed = true;
+                }
+
+                if (changed) {
+                    node.textContent = text;
+                }
              });
 
              MathJax.startup.defaultReady();
