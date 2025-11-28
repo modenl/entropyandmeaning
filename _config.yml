@@ -4,7 +4,7 @@ source: docs
 markdown: kramdown
 kramdown:
   input: GFM
-  math_engine: mathjax
+  math_engine: null
 theme: null
 plugins:
   - jekyll-optional-front-matter
