@@ -6,11 +6,13 @@ kramdown:
   input: GFM
   math_engine: mathjax
 theme: null
-navigation:
-  - title: "前言"
-    url: "/Preface.html"
-  - title: "第一章 公理、时间与因果：科学思维的底层操作系统"
-    url: "/Chapter1.html"
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-titles-from-headings
+titles_from_headings:
+  enabled: true
+  strip_title: true
+  collections: true
 defaults:
   - scope:
       path: ""
