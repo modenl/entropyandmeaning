@@ -33,58 +33,68 @@
       },
       startup: {
         ready: () => {
-          // 1. Handle Display Math [ ... ]
-          // Restoration of previous logic to handle block math
-          const nodes = document.querySelectorAll('p, li, div');
-          nodes.forEach(node => {
-            if (node.dataset.mathProcessed) return;
-            const text = node.textContent.trim();
-            const looksLikeDisplay = text.startsWith('[') && text.endsWith(']');
-            const containsTeX = text.includes('\\');
-            const isReference = /^\[\d+\]:/.test(text);
-            if (looksLikeDisplay && containsTeX && !isReference) {
-              const inner = text.slice(1, -1).trim();
-              node.innerHTML = `\\[${inner}\\]`;
-              node.dataset.mathProcessed = 'true';
-            }
-          });
-
-          // 2. Handle Inline Math ( ... ) and fix P(Y|X) pipe issue
-          const contentRoot = document.querySelector('.page-card') || document.body;
-          const walk = document.createTreeWalker(contentRoot, NodeFilter.SHOW_TEXT, null, false);
-          let textNode;
-          const nodesToUpdate = [];
-          
-          while(textNode = walk.nextNode()) {
-             // Check for patterns that look like the problematic math
-             if (textNode.textContent.match(/\(P\(|U\(t\)|\(\\hat/)) {
-                 nodesToUpdate.push(textNode);
-             }
-          }
-
-          nodesToUpdate.forEach(node => {
-             let text = node.textContent;
-             
-             // Regex to capture P(...) patterns, handling simple nesting for do(...)
-             // Matches (P( ... )) where inner content can contain ( ... )
-             const probabilityRegex = /\(P\(([^()]+(?:\([^()]*\)[^()]*)*)\)\)/g;
-             
-             text = text.replace(probabilityRegex, (match, inner) => {
-                 // Replace | with \mid inside the probability expression for better rendering
-                 const fixedInner = inner.replace(/\|/g, '\\mid ');
-                 return `\\( P(${fixedInner}) \\)`;
+          const fixAndRender = () => {
+             // 1. Handle Display Math [ ... ]
+             const nodes = document.querySelectorAll('p, li, div');
+             nodes.forEach(node => {
+               if (node.dataset.mathProcessed) return;
+               const text = node.textContent.trim();
+               const looksLikeDisplay = text.startsWith('[') && text.endsWith(']');
+               const containsTeX = text.includes('\\');
+               const isReference = /^\[\d+\]:/.test(text);
+               if (looksLikeDisplay && containsTeX && !isReference) {
+                 const inner = text.slice(1, -1).trim();
+                 node.innerHTML = `\\[${inner}\\]`;
+                 node.dataset.mathProcessed = 'true';
+               }
              });
-             
-             // Handle simple function calls like U(t)
-             text = text.replace(/\(U\(t\)\)/g, '\\( U(t) \\)');
-             
-             // Handle hat{H}
-             text = text.replace(/\(\\hat\{H\}\)/g, '\\( \\hat{H} \\)');
-             
-             node.textContent = text;
-          });
 
-          MathJax.startup.defaultReady();
+             // 2. Handle Inline Math ( ... ) and fix P(Y|X) pipe issue
+             const contentRoot = document.querySelector('.page-card') || document.body;
+             const walk = document.createTreeWalker(contentRoot, NodeFilter.SHOW_TEXT, null, false);
+             let textNode;
+             const nodesToUpdate = [];
+             
+             while(textNode = walk.nextNode()) {
+                if (textNode.textContent.match(/\(P\(|U\(t\)|\(\\hat/)) {
+                    nodesToUpdate.push(textNode);
+                }
+             }
+
+             nodesToUpdate.forEach(node => {
+                let text = node.textContent;
+                
+                // Handle probability P(...)
+                // We use a loop to handle multiple occurrences
+                const probabilityRegex = /\(P\(([^()]+(?:\([^()]*\)[^()]*)*)\)\)/g;
+                text = text.replace(probabilityRegex, (match, inner) => {
+                    // Replace | with \mid
+                    let fixedInner = inner.replace(/\|/g, '\\mid ');
+                    // Replace do(X) with \text{do}(X)
+                    fixedInner = fixedInner.replace(/do\(/g, '\\text{do}(');
+                    return `\\( P(${fixedInner}) \\)`;
+                });
+                
+                // Handle do(...) alone if strictly formatted as (P(Y|do(X))) it's caught above.
+                // But if there are other cases like (do(X))? Unlikely in this text but good to be safe.
+                
+                // Handle U(t)
+                text = text.replace(/\(U\(t\)\)/g, '\\( U(t) \\)');
+                
+                // Handle hat{H}
+                text = text.replace(/\(\\hat\{H\}\)/g, '\\( \\hat{H} \\)');
+                
+                node.textContent = text;
+             });
+
+             MathJax.startup.defaultReady();
+          };
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', fixAndRender);
+          } else {
+            fixAndRender();
+          }
         }
       }
     };
