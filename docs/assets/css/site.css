@@ -439,7 +439,7 @@ mjx-container mjx-math {
 
 /* Nav Toggle Button Styles */
 .nav-toggle {
-  display: none; /* Hidden on desktop */
+  display: none; /* Hidden on desktop by default */
   background: none;
   border: none;
   padding: 8px;
@@ -485,6 +485,13 @@ mjx-container mjx-math {
 .nav-toggle[aria-expanded="true"] .hamburger::after {
   top: 0;
   transform: rotate(-45deg);
+}
+
+/* Ensure nav toggle is visible on small screens (overrides base rule above) */
+@media (max-width: 800px) {
+  .nav-toggle {
+    display: flex;
+  }
 }
 
 @keyframes rise {
