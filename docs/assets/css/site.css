@@ -353,31 +353,33 @@ mjx-container mjx-math {
   .site-shell {
     padding: 14px 18px;
     align-items: center;
-    flex-wrap: wrap;
     gap: 10px;
   }
 
   .site-meta {
     flex: 1;
-    min-width: 0; /* Allow shrinking */
+    min-width: 0;
   }
 
   .nav-toggle {
     display: block;
-    margin-left: auto; /* Push to right */
+    margin-left: auto;
   }
 
   .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
     width: 100%;
     display: none;
     flex-direction: column;
     align-items: stretch;
-    gap: 8px;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-    margin-top: 8px;
-    background: rgba(255, 255, 255, 0.5); /* Slight background to separate */
-    border-radius: 8px;
+    background: var(--card);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 0;
+    margin-top: 0;
+    z-index: 100;
   }
 
   .site-nav.is-visible {
@@ -385,9 +387,20 @@ mjx-container mjx-math {
   }
 
   .site-nav a {
-    padding: 12px 16px;
-    text-align: center;
-    background: #fff; /* Ensure buttons are readable */
+    padding: 12px 24px;
+    text-align: left;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    color: var(--ink);
+    font-size: 16px;
+  }
+
+  .site-nav a:hover,
+  .site-nav a.is-active {
+    background: var(--bg-2);
+    color: var(--accent);
+    box-shadow: none;
   }
 
   .page-shell {
