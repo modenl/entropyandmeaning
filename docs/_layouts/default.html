@@ -1,14 +1,19 @@
 <!doctype html>
 <html lang="zh-CN">
-{% assign nav_items = site.pages | where_exp: "p", "p.url != '/' and p.url contains '.html'" | where_exp: "p", "p.name != 'index.md'" | sort: "path" %}
-{% assign first_nav = nav_items | first %}
+{% assign nav_items = site.html_pages | sort: "path" %}
+{% assign first_nav_url = nil %}
+{% for p in nav_items %}
+  {% if p.url != '/' and first_nav_url == nil %}
+    {% assign first_nav_url = p.url %}
+  {% endif %}
+{% endfor %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: site.title }}</title>
   <meta name="description" content="{{ page.excerpt | strip_html | strip_newlines | default: site.description }}">
-  {% if page.url == "/" and first_nav %}
-    <meta http-equiv="refresh" content="0; url={{ first_nav.url | relative_url }}">
+  {% if page.url == "/" and first_nav_url %}
+    <meta http-equiv="refresh" content="0; url={{ first_nav_url | relative_url }}">
   {% endif %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,14 +55,20 @@
   <div class="scrollbar" aria-hidden="true"></div>
   <header class="site-shell">
     <div class="site-meta">
-      <a class="brand" href="{{ first_nav.url | relative_url | default: '/' }}">{{ site.title }}</a>
+      {% if first_nav_url %}
+        <a class="brand" href="{{ first_nav_url | relative_url }}">{{ site.title }}</a>
+      {% else %}
+        <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      {% endif %}
       <p class="tagline">{{ site.description }}</p>
     </div>
     {% if nav_items and nav_items.size > 0 %}
       <nav class="site-nav" aria-label="目录">
         {% for item in nav_items %}
-          {% assign is_active = page.url == item.url %}
-          <a class="{% if is_active %}is-active{% endif %}" href="{{ item.url | relative_url }}">{{ item.title | default: item.name | default: item.url }}</a>
+          {% if item.url != '/' %}
+            {% assign is_active = page.url == item.url %}
+            <a class="{% if is_active %}is-active{% endif %}" href="{{ item.url | relative_url }}">{{ item.title | default: item.name | default: item.url }}</a>
+          {% endif %}
         {% endfor %}
       </nav>
     {% endif %}
