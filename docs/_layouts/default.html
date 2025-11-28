@@ -25,6 +25,25 @@
       },
       options: {
         skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      startup: {
+        ready: () => {
+          const nodes = document.querySelectorAll('p, li, div');
+          nodes.forEach(node => {
+            if (node.dataset.mathProcessed) return;
+            const text = node.textContent.trim();
+            const looksLikeDisplay = text.startsWith('[') && text.endsWith(']');
+            const containsTeX = text.includes('\\');
+            const isReference = /^\[\d+\]:/.test(text);
+            if (looksLikeDisplay && containsTeX && !isReference) {
+              const inner = text.slice(1, -1).trim();
+              node.innerHTML = `\\[${inner}\\]`;
+              node.dataset.mathProcessed = 'true';
+            }
+          });
+          MathJax.startup.defaultReady();
+          MathJax.typesetPromise();
+        }
       }
     };
   </script>
