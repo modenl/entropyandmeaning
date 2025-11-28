@@ -1,0 +1,13 @@
+title: "Entropy and Meaning"
+description: "Notes and essays on entropy, intelligence, and meaning"
+source: docs
+markdown: kramdown
+kramdown:
+  input: GFM
+theme: null
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
