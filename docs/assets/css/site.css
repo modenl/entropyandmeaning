@@ -349,7 +349,7 @@ mjx-container mjx-math {
   line-height: 1.4;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
   .site-shell {
     padding: 14px 18px;
     align-items: center;
