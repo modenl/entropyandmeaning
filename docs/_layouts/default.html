@@ -46,8 +46,11 @@
       {% endif %}
       <p class="tagline">{{ site.description }}</p>
     </div>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
     {% if nav_items and nav_items.size > 0 %}
-      <nav class="site-nav" aria-label="目录">
+      <nav class="site-nav" aria-label="目录" id="site-nav">
         {% for item in nav_items %}
           {% if item.url != '/' %}
             {% assign is_active = page.url == item.url %}
@@ -73,16 +76,28 @@
   <script>
     (() => {
       const bar = document.querySelector('.scrollbar');
-      if (!bar) return;
-      const update = () => {
-        const doc = document.documentElement;
-        const max = doc.scrollHeight - doc.clientHeight;
-        const progress = max > 0 ? (doc.scrollTop / max) * 100 : 0;
-        bar.style.setProperty('--scroll', `${progress}%`);
-      };
-      document.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update);
-      update();
+      if (bar) {
+        const update = () => {
+          const doc = document.documentElement;
+          const max = doc.scrollHeight - doc.clientHeight;
+          const progress = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+          bar.style.setProperty('--scroll', `${progress}%`);
+        };
+        document.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+      }
+
+      // Mobile nav toggle
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.site-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', !isExpanded);
+          nav.classList.toggle('is-visible');
+        });
+      }
     })();
   </script>
 </body>
