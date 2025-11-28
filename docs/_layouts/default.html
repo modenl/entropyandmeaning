@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-CN">
-{% assign nav_items = site.pages | where_exp: "p", "p.url != '/' and p.url contains '.html'" | where_exp: "p", "p.name != 'index.md'" | sort_natural: "path" %}
+{% assign nav_items = site.pages | where_exp: "p", "p.url != '/' and p.url contains '.html'" | where_exp: "p", "p.name != 'index.md'" | sort: "path" %}
 {% assign first_nav = nav_items | first %}
 <head>
   <meta charset="UTF-8">
