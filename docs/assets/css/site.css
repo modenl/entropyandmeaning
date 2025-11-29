@@ -487,6 +487,50 @@ mjx-container mjx-math {
   transform: rotate(-45deg);
 }
 
+/* Copy button */
+.copy-btn {
+  position: fixed;
+  right: 22px;
+  bottom: 26px;
+  z-index: 25;
+  padding: 12px 18px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(15, 118, 110, 0.22);
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+
+.copy-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(15, 118, 110, 0.26);
+}
+
+.copy-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 20px rgba(15, 118, 110, 0.2);
+}
+
+.copy-btn:disabled {
+  opacity: 0.78;
+  cursor: wait;
+}
+
+@media (max-width: 800px) {
+  .copy-btn {
+    right: 14px;
+    bottom: 18px;
+    padding: 11px 14px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+}
+
 /* Ensure nav toggle is visible on small screens (overrides base rule above) */
 @media (max-width: 800px) {
   .nav-toggle {
