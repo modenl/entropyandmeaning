@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-CN">
-{% assign nav_items = site.html_pages | sort: "path" %}
+{% assign nav_items = site.html_pages | sort_natural: "path" %}
 {% assign brand_title = site.book_title | default: "《构建统一的世界观》" %}
 {% assign tagline_text = site.tagline | default: "《构建统一的世界观》- 从物理到意识，从演化到意义的自然主义框架" %}
 
