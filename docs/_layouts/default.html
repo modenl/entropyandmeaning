@@ -108,6 +108,8 @@
     </article>
   </main>
 
+  <button class="copy-btn" id="copy-btn" type="button" aria-live="polite">复制全文</button>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <p>写作进行中 · {{ site.title }}</p>
@@ -137,6 +139,47 @@
           const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
           toggle.setAttribute('aria-expanded', !isExpanded);
           nav.classList.toggle('is-visible');
+        });
+      }
+
+      // Copy full page content
+      const copyBtn = document.getElementById('copy-btn');
+      const article = document.querySelector('.page-card');
+      const defaultCopyLabel = '复制全文';
+
+      const updateCopyLabel = (text, reset = false) => {
+        copyBtn.textContent = text;
+        if (reset) {
+          setTimeout(() => {
+            copyBtn.disabled = false;
+            copyBtn.textContent = defaultCopyLabel;
+          }, 1800);
+        }
+      };
+
+      if (copyBtn && article) {
+        copyBtn.addEventListener('click', async () => {
+          const text = article.innerText.trim();
+          if (!text) return;
+          copyBtn.disabled = true;
+          updateCopyLabel('复制中…');
+          try {
+            if (navigator.clipboard?.writeText) {
+              await navigator.clipboard.writeText(text);
+            } else {
+              const helper = document.createElement('textarea');
+              helper.value = text;
+              helper.style.position = 'fixed';
+              helper.style.opacity = '0';
+              document.body.appendChild(helper);
+              helper.select();
+              document.execCommand('copy');
+              helper.remove();
+            }
+            updateCopyLabel('已复制', true);
+          } catch (e) {
+            updateCopyLabel('复制失败', true);
+          }
         });
       }
     })();
