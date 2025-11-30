@@ -200,6 +200,7 @@
           const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
           toggle.setAttribute('aria-expanded', !isExpanded);
           nav.classList.toggle('is-visible');
+          document.body.classList.toggle('nav-open', !isExpanded);
         });
       }
 
