@@ -155,7 +155,7 @@ ZFC 选择把“无限”写进公理，这相当于宣告：
 i\hbar \frac{\partial}{\partial t}|\Psi(t)\rangle = \hat{H}|\Psi(t)\rangle
 \\]
 
-只要哈密顿量 (\hat{H}) 不显式依赖时间，我们可以写成：
+只要哈密顿量 $\hat{H}$ 不显式依赖时间，我们可以写成：
 
 \\[
 |\Psi(t)\rangle = U(t)|\Psi(0)\rangle,\quad U(t)=e^{-i\hat{H}t/\hbar}
