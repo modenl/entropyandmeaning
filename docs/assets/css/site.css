@@ -392,7 +392,7 @@ mjx-container mjx-math {
     padding: 14px 18px;
     align-items: center;
     gap: 10px;
-    position: relative; /* Ensure absolute child positions correctly */
+    position: relative; /* Ensure absolute/fixed child positions correctly */
   }
 
   .site-meta {
@@ -415,28 +415,31 @@ mjx-container mjx-math {
   }
 
   .site-nav {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 68px;
     left: 0;
-    right: 0; /* Ensure full width */
-    width: auto;
-    display: none;
+    bottom: 0;
+    width: min(82vw, 320px);
+    max-width: 360px;
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     background: #ffffff; /* Force white background */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    border-top: 1px solid var(--border);
-    padding: 4px 0;
+    box-shadow: 14px 0 28px rgba(0,0,0,0.16);
+    border-right: 1px solid var(--border);
+    padding: 12px 0 28px;
     margin-top: 0;
-    z-index: 9999; /* Very high z-index */
+    z-index: 30;
+    transform: translateX(-100%);
+    transition: transform 200ms ease;
   }
 
   .site-nav.is-visible {
-    display: flex;
+    transform: translateX(0);
   }
 
   .site-nav a {
-    padding: 14px 24px;
+    padding: 14px 20px;
     text-align: left;
     border: none;
     background: transparent;
@@ -444,6 +447,7 @@ mjx-container mjx-math {
     color: #1f2933; /* var(--ink) fallback */
     font-size: 16px;
     border-bottom: 1px solid rgba(0,0,0,0.03);
+    white-space: normal;
   }
   
   .site-nav a:last-child {
