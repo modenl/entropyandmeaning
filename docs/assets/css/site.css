@@ -582,8 +582,10 @@ mjx-container mjx-math {
     width: 40px;
     height: 40px;
     border-radius: 4px;
-    position: relative;
-    z-index: 1001; /* Ensure button is above the fixed menu */
+    position: fixed;
+    top: calc(14px + env(safe-area-inset-top, 0px));
+    right: 18px;
+    z-index: 3001; /* Above overlay menu */
   }
   
   .nav-toggle:active {

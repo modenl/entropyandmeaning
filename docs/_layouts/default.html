@@ -202,6 +202,16 @@
           nav.classList.toggle('is-visible');
           document.body.classList.toggle('menu-open');
         });
+
+        // Close menu when clicking a link or empty space on the overlay
+        nav.addEventListener('click', (e) => {
+          const target = e.target;
+          if (target.tagName === 'A' || target === nav) {
+            toggle.setAttribute('aria-expanded', 'false');
+            nav.classList.remove('is-visible');
+            document.body.classList.remove('menu-open');
+          }
+        });
       }
 
       // Copy full page content
