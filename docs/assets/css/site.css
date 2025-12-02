@@ -597,11 +597,12 @@ mjx-container mjx-math {
     flex-direction: column;
     align-items: stretch;
     background: #ffffff;
-    padding-top: 70px; /* Space for header */
+    padding-top: 70px;
     padding-bottom: 40px;
     z-index: 1000;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain; /* Prevent scroll chaining */
     border-top: none;
     box-shadow: none;
   }
@@ -609,6 +610,14 @@ mjx-container mjx-math {
   .site-nav.is-visible {
     display: flex;
   }
+}
+
+body.menu-open {
+  overflow: hidden;
+  height: 100vh; /* Lock height to viewport */
+  position: fixed; /* Force lock on iOS */
+  width: 100%;
+}
 
   .site-nav a {
     padding: 14px 20px;
