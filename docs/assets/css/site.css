@@ -506,6 +506,7 @@ mjx-container mjx-math {
     background: rgba(255, 255, 255, 0.92);
     border-right: 1px solid var(--border);
     box-shadow: 12px 0 32px rgba(15, 24, 36, 0.12);
+    height: 100vh;
   }
 
   .site-meta {
@@ -520,9 +521,11 @@ mjx-container mjx-math {
     gap: 10px;
     box-shadow: none;
     border: none;
-    padding: 0;
+    padding: 0 2px 4px 0;
     margin: 0;
     transform: none;
+    flex: 1;
+    overflow-y: auto;
   }
 
   .site-nav a {
@@ -533,6 +536,7 @@ mjx-container mjx-math {
     padding: 12px 14px;
     border-bottom: none;
     box-shadow: 0 8px 24px rgba(15, 118, 110, 0.12);
+    display: block;
   }
 
   .site-nav a:hover,
@@ -587,24 +591,24 @@ mjx-container mjx-math {
 
   .site-nav {
     position: fixed;
-    top: 0;
+    top: 64px;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: auto;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 64px);
     display: none;
     flex-direction: column;
     align-items: stretch;
     background: #ffffff;
-    padding-top: 70px;
-    padding-bottom: 40px;
+    padding: 8px 0 16px;
     z-index: 1000;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain; /* Prevent scroll chaining */
     border-top: none;
     box-shadow: none;
+    gap: 0;
   }
 
   .site-nav.is-visible {
@@ -629,6 +633,7 @@ body.menu-open {
     font-size: 16px;
     border-bottom: 1px solid rgba(0,0,0,0.06);
     white-space: normal;
+    display: block;
   }
   
   .site-nav a:last-child {
