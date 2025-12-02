@@ -592,24 +592,21 @@ mjx-container mjx-math {
 
   .site-nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     width: 100%;
-    height: 100vh;
+    max-height: 100vh;
     display: none;
     flex-direction: column;
     align-items: stretch;
     background: #ffffff;
-    padding: 72px 0 20px; /* leave room for header toggle */
+    padding: calc(64px + env(safe-area-inset-top, 0px)) 16px calc(24px + env(safe-area-inset-bottom, 0px)); /* leave room for header and safe areas */
+    gap: 10px;
     z-index: 1000;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain; /* Prevent scroll chaining */
     border-top: none;
     box-shadow: none;
-    gap: 0;
   }
 
   .site-nav.is-visible {
