@@ -600,6 +600,8 @@ mjx-container mjx-math {
     bottom: 0;
     width: 100%;
     height: 100vh;
+    height: 100dvh; /* iOS safari viewport */
+    max-height: 100dvh;
     display: none;
     flex-direction: column;
     align-items: stretch;
@@ -612,6 +614,7 @@ mjx-container mjx-math {
     overscroll-behavior: contain; /* Prevent scroll chaining */
     border-top: none;
     box-shadow: none;
+    box-sizing: border-box;
   }
 
   .site-nav.is-visible {
