@@ -170,17 +170,17 @@
 
 在量子力学里，封闭系统的时间演化由 Schrödinger 方程控制：
 
-\[
+$$
 i\hbar \frac{\partial}{\partial t}|\Psi(t)\rangle = \hat{H}|\Psi(t)\rangle
-\]
+$$
 
 在合适条件下，它可以写成：
 
-\[
+$$
 |\Psi(t)\rangle = U(t)|\Psi(0)\rangle,\quad U(t)=e^{-i\hat{H}t/\hbar}
-\]
+$$
 
-这个演化算符 \(U(t)\) 是**幺正**的。  
+这个演化算符 $U(t)$ 是**幺正**的。  
 幺正最值得你记住的含义，不是术语本身，而是这三件事：
 
 * 演化是可逆的；
@@ -255,8 +255,8 @@ i\hbar \frac{\partial}{\partial t}|\Psi(t)\rangle = \hat{H}|\Psi(t)\rangle
 
 我们要区分两类看起来很像、实则完全不同的问题：
 
-* \(P(Y\mid X=x)\)：观察到 X=x 时，Y 的分布；
-* \(P(Y\mid \text{do}(X=x))\)：如果我强行把 X 设成 x，Y 的分布。
+* $P(Y\mid X=x)$：观察到 X=x 时，Y 的分布；
+* $P(Y\mid \text{do}(X=x))$：如果我强行把 X 设成 x，Y 的分布。
 
 这两者的差别，不在符号，而在你对世界做没做“改线”这件事。
 
@@ -271,16 +271,16 @@ i\hbar \frac{\partial}{\partial t}|\Psi(t)\rangle = \hat{H}|\Psi(t)\rangle
 
 可以写成：
 
-\[
+$$
 Z \rightarrow X \rightarrow Y,\quad Z \rightarrow Y
-\]
+$$
 
-如果你只看 \(P(Y\mid X)\)，你混在一起看到的是：
+如果你只看 $P(Y\mid X)$，你混在一起看到的是：
 
 * X 对 Y 的影响；
 * 以及 Z 同时推高 X 和 Y 所造成的关联。
 
-但 \(P(Y\mid \text{do}(X))\) 想问的是另一件事：
+但 $P(Y\mid \text{do}(X))$ 想问的是另一件事：
 
 > 如果我把通向 X 的那堆来路先剪断，
 > 再强行规定“吸”或“不吸”，
@@ -331,9 +331,9 @@ Z \rightarrow X \rightarrow Y,\quad Z \rightarrow Y
 
 这就是典型混杂：
 
-\[
+$$
 Z \rightarrow X,\quad Z \rightarrow Y
-\]
+$$
 
 在这种情况下，应该控制的是 **共同原因**。  
 比如只在同龄组里比较，或者在统计模型里把年龄单独放进去。  
@@ -360,9 +360,9 @@ Z \rightarrow X,\quad Z \rightarrow Y
 
 于是有：
 
-\[
+$$
 X \rightarrow C \leftarrow U,\quad U \rightarrow Y
-\]
+$$
 
 这里的 C 是 **碰撞点**：它是两条因果链的共同结果。
 
@@ -407,7 +407,7 @@ X \rightarrow C \leftarrow U,\quad U \rightarrow Y
 * 病情较轻的人，更容易被安排尝试实验疗法；
 * 医生也可能把“看起来更有希望”的病人优先推入某个方案。
 
-这些因素同时影响“谁吃药”和“谁康复”，于是你看到的 \(P(Y\mid X)\) 根本不等于药物本身的因果效应。
+这些因素同时影响“谁吃药”和“谁康复”，于是你看到的 $P(Y\mid X)$ 根本不等于药物本身的因果效应。
 
 **随机化**做的第一件事，就是强行插入一个近似纯随机节点：
 
@@ -416,7 +416,7 @@ X \rightarrow C \leftarrow U,\quad U \rightarrow Y
 
 这么做的效果是：  
 在足够大的样本里，治疗组和对照组在各种已知和未知混杂因素上，会趋向统计均衡。  
-于是两组结果的差别，更接近 \(\text{do}(X)\) 所对应的因果效应，而不只是现实世界里自带偏置的观察差异。
+于是两组结果的差别，更接近 $\text{do}(X)$ 所对应的因果效应，而不只是现实世界里自带偏置的观察差异。
 
 但事情还没完。  
 即便分组是随机的，人的期待、暗示和记录偏差仍然会制造新路径：
@@ -431,7 +431,7 @@ X \rightarrow C \leftarrow U,\quad U \rightarrow Y
 * “知道分组 → 医生判断偏移 → 结果记录偏移”
 
 再配上足够样本量、规范随访和合适的统计分析，  
-我们就得到了一种尽可能逼近 \(P(Y\mid \text{do}(X))\) 的现实方案。
+我们就得到了一种尽可能逼近 $P(Y\mid \text{do}(X))$ 的现实方案。
 
 所以，随机双盲试验之所以重要，不是因为它有某种仪式感，而是因为它恰好体现了这整章一直在讲的那条主线：
 

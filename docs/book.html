@@ -415,10 +415,16 @@ AI
 <h4 id="量子幺正演化底层过程并不天然偏爱未来">量子幺正演化：底层过程并不天然偏爱未来</h4>
 <p>如果把镜头再往微观推进，时间会显得更反直觉。</p>
 <p>在量子力学里，封闭系统的时间演化由 Schrödinger 方程控制：</p>
-<p>[ i|(t)= |(t) ]</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">
+i\hbar \frac{\partial}{\partial t}|\Psi(t)\rangle = \hat{H}|\Psi(t)\rangle
+</annotation></semantics></math></p>
 <p>在合适条件下，它可以写成：</p>
-<p>[ |(t)= U(t)|(0),U(t)=e^{-it/} ]</p>
-<p>这个演化算符 (U(t)) 是<strong>幺正</strong>的。<br />
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mi>U</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⟩</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>U</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">
+|\Psi(t)\rangle = U(t)|\Psi(0)\rangle,\quad U(t)=e^{-i\hat{H}t/\hbar}
+</annotation></semantics></math></p>
+<p>这个演化算符
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">U(t)</annotation></semantics></math>
+是<strong>幺正</strong>的。<br />
 幺正最值得你记住的含义，不是术语本身，而是这三件事：</p>
 <ul>
 <li>演化是可逆的；</li>
@@ -484,8 +490,10 @@ AI
 <p>在 Pearl 的语言里，最核心的新增动作，是 <strong>do</strong>。</p>
 <p>我们要区分两类看起来很像、实则完全不同的问题：</p>
 <ul>
-<li>(P(YX=x))：观察到 X=x 时，Y 的分布；</li>
-<li>(P(Y(X=x)))：如果我强行把 X 设成 x，Y 的分布。</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>∣</mo><mi>X</mi><mo>=</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(Y\mid X=x)</annotation></semantics></math>：观察到
+X=x 时，Y 的分布；</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>∣</mo><mtext mathvariant="normal">do</mtext><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo>=</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(Y\mid \text{do}(X=x))</annotation></semantics></math>：如果我强行把
+X 设成 x，Y 的分布。</li>
 </ul>
 <p>这两者的差别，不在符号，而在你对世界做没做“改线”这件事。</p>
 <blockquote>
@@ -498,13 +506,18 @@ AI
 <li>Z：某种基因因素，同时影响吸烟倾向和肺癌风险。</li>
 </ul>
 <p>可以写成：</p>
-<p>[ Z X Y,Z Y ]</p>
-<p>如果你只看 (P(YX))，你混在一起看到的是：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>→</mo><mi>X</mi><mo>→</mo><mi>Y</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>Z</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">
+Z \rightarrow X \rightarrow Y,\quad Z \rightarrow Y
+</annotation></semantics></math></p>
+<p>如果你只看
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>∣</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(Y\mid X)</annotation></semantics></math>，你混在一起看到的是：</p>
 <ul>
 <li>X 对 Y 的影响；</li>
 <li>以及 Z 同时推高 X 和 Y 所造成的关联。</li>
 </ul>
-<p>但 (P(Y(X))) 想问的是另一件事：</p>
+<p>但
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>∣</mo><mtext mathvariant="normal">do</mtext><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(Y\mid \text{do}(X))</annotation></semantics></math>
+想问的是另一件事：</p>
 <blockquote>
 <p>如果我把通向 X 的那堆来路先剪断， 再强行规定“吸”或“不吸”， 那么 Y
 会如何变化？</p>
@@ -546,7 +559,9 @@ AI
 年龄越大，阅读能力通常也越强。<br />
 也就是说，Z 同时影响 X 和 Y。</p>
 <p>这就是典型混杂：</p>
-<p>[ Z X,Z Y ]</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>→</mo><mi>X</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>Z</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">
+Z \rightarrow X,\quad Z \rightarrow Y
+</annotation></semantics></math></p>
 <p>在这种情况下，应该控制的是 <strong>共同原因</strong>。<br />
 比如只在同龄组里比较，或者在统计模型里把年龄单独放进去。<br />
 一旦做了这个动作，鞋码和阅读之间那条看似显著的关系，通常就会大幅消失。</p>
@@ -569,7 +584,9 @@ AI
 <li>身体条件 U 又影响身高（U→Y）。</li>
 </ul>
 <p>于是有：</p>
-<p>[ X C U,U Y ]</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>C</mi><mo>←</mo><mi>U</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>U</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">
+X \rightarrow C \leftarrow U,\quad U \rightarrow Y
+</annotation></semantics></math></p>
 <p>这里的 C 是 <strong>碰撞点</strong>：它是两条因果链的共同结果。</p>
 <p>如果你只研究“已经入选校队的人”，相当于把 C 固定住了。<br />
 这个动作会产生一个非常危险的副作用：<br />
@@ -607,7 +624,8 @@ AI
 <li>病情较轻的人，更容易被安排尝试实验疗法；</li>
 <li>医生也可能把“看起来更有希望”的病人优先推入某个方案。</li>
 </ul>
-<p>这些因素同时影响“谁吃药”和“谁康复”，于是你看到的 (P(YX))
+<p>这些因素同时影响“谁吃药”和“谁康复”，于是你看到的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>∣</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(Y\mid X)</annotation></semantics></math>
 根本不等于药物本身的因果效应。</p>
 <p><strong>随机化</strong>做的第一件事，就是强行插入一个近似纯随机节点：</p>
 <blockquote>
@@ -616,7 +634,8 @@ AI
 </blockquote>
 <p>这么做的效果是：<br />
 在足够大的样本里，治疗组和对照组在各种已知和未知混杂因素上，会趋向统计均衡。<br />
-于是两组结果的差别，更接近 ((X))
+于是两组结果的差别，更接近
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">do</mtext><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\text{do}(X)</annotation></semantics></math>
 所对应的因果效应，而不只是现实世界里自带偏置的观察差异。</p>
 <p>但事情还没完。<br />
 即便分组是随机的，人的期待、暗示和记录偏差仍然会制造新路径：</p>
@@ -631,7 +650,9 @@ AI
 <li>“知道分组 → 医生判断偏移 → 结果记录偏移”</li>
 </ul>
 <p>再配上足够样本量、规范随访和合适的统计分析，<br />
-我们就得到了一种尽可能逼近 (P(Y(X))) 的现实方案。</p>
+我们就得到了一种尽可能逼近
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>∣</mo><mtext mathvariant="normal">do</mtext><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(Y\mid \text{do}(X))</annotation></semantics></math>
+的现实方案。</p>
 <p>所以，随机双盲试验之所以重要，不是因为它有某种仪式感，而是因为它恰好体现了这整章一直在讲的那条主线：</p>
 <blockquote>
 <p><strong>真正成熟的科学方法，
@@ -719,9 +740,12 @@ AGI 时代依然站得住的“世界观生成树”。</p>
 </ul></li>
 <li><p><strong>再从规则里“长”出结构</strong></p>
 <ul>
-<li>把 0 定义成空集 ()；</li>
-<li>把 1 定义成 ({})；</li>
-<li>把 2 定义成 ({,{}})……
+<li>把 0 定义成空集
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⌀</mi><annotation encoding="application/x-tex">\varnothing</annotation></semantics></math>；</li>
+<li>把 1 定义成
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>⌀</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\varnothing\}</annotation></semantics></math>；</li>
+<li>把 2 定义成
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>⌀</mi><mo>,</mo><mo stretchy="false" form="prefix">{</mo><mi>⌀</mi><mo stretchy="false" form="postfix">}</mo><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\varnothing,\{\varnothing\}\}</annotation></semantics></math>……
 再往上，就能一路定义整数、实数、向量空间、拓扑空间、流形、群。</li>
 </ul></li>
 <li><p><strong>最后在结构里推定理</strong></p>
@@ -814,7 +838,10 @@ AGI 时代依然站得住的“世界观生成树”。</p>
 <ul>
 <li><p>在日常速度和尺度上，</p>
 <ul>
-<li>我们采用 (F=ma) 和万有引力 (F=G)；</li>
+<li>我们采用
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>m</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">F=ma</annotation></semantics></math>
+和万有引力
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>G</mi><mfrac><mrow><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub></mrow><msup><mi>r</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">F=G\frac{m_1m_2}{r^2}</annotation></semantics></math>；</li>
 <li>再配上近似平直的空间和统一时间；</li>
 <li>这组规则就生成了经典力学世界。</li>
 </ul></li>
@@ -841,10 +868,22 @@ AGI 时代依然站得住的“世界观生成树”。</p>
 <h3 id="极简法则如何长出极复杂世界">极简法则，如何长出极复杂世界？</h3>
 <p>把几条经典公式并排摆开看：</p>
 <ul>
-<li>质能关系： [ E = mc^2 ]</li>
-<li>万有引力： [ F = G ]</li>
-<li>牛顿第二定律： [ F = ma ]</li>
-<li>理想气体状态方程： [ PV = nRT ]</li>
+<li>质能关系：
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+E = mc^2
+</annotation></semantics></math></li>
+<li>万有引力：
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>G</mi><mfrac><mrow><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub></mrow><msup><mi>r</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">
+F = G\frac{m_1m_2}{r^2}
+</annotation></semantics></math></li>
+<li>牛顿第二定律：
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>m</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">
+F = ma
+</annotation></semantics></math></li>
+<li>理想气体状态方程：
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>V</mi><mo>=</mo><mi>n</mi><mi>R</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">
+PV = nRT
+</annotation></semantics></math></li>
 </ul>
 <p>它们有一个共同特点：</p>
 <ol type="1">
@@ -854,7 +893,8 @@ AGI 时代依然站得住的“世界观生成树”。</p>
 </ol>
 <p>以万有引力为例：</p>
 <ul>
-<li>结合 (F=ma)，可以得到近似椭圆轨道；</li>
+<li>结合
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>m</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">F=ma</annotation></semantics></math>，可以得到近似椭圆轨道；</li>
 <li>再往下，可以解释潮汐、彗星、星团运动；</li>
 <li>再加入相对论修正，还能解释水星近日点进动和引力透镜。</li>
 </ul>
@@ -863,11 +903,16 @@ AGI 时代依然站得住的“世界观生成树”。</p>
 <p>这些方程就像宇宙局部区域的“高压缩代码”。
 一段极短程序，生成了大批可以被观测的数据。</p>
 </blockquote>
-<p>这里最好再补一个更“手感化”的例子。 如果一个质量为 (m)
+<p>这里最好再补一个更“手感化”的例子。 如果一个质量为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
 的小球只受重力作用， 那么它满足</p>
-<p>[ F=ma,F=mg ]</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>m</mi><mi>a</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>F</mi><mo>=</mo><mi>m</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">
+F=ma,\qquad F=mg
+</annotation></semantics></math></p>
 <p>于是直接得到</p>
-<p>[ a=g ]</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">
+a=g
+</annotation></semantics></math></p>
 <p>也就是说，它在竖直方向上始终以近似恒定的加速度下落。
 再积分一次得到速度随时间线性增长，再积分一次得到位移随时间二次增长。
 你熟悉的抛物线轨迹，并不是后来额外加上的“现象描述”，
@@ -883,14 +928,18 @@ AGI 时代依然站得住的“世界观生成树”。</p>
 <p>如果说物理定律是剧本，
 那么最小作用量原理，就像很多剧本背后共享的一条导演规则。</p>
 <p>形式上，它写成：</p>
-<p>[ S = _{t_1}^{t_2} L,dt, S = 0 ]</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><msubsup><mo>∫</mo><msub><mi>t</mi><mn>1</mn></msub><msub><mi>t</mi><mn>2</mn></msub></msubsup><mi>L</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>δ</mi><mi>S</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+S = \int_{t_1}^{t_2} L\,dt, \quad \delta S = 0
+</annotation></semantics></math></p>
 <p>翻译成人话就是：</p>
 <blockquote>
-<p>在所有从起点到终点的可能路径里， 自然实际走的那条，会让某个整体量 (S)
+<p>在所有从起点到终点的可能路径里， 自然实际走的那条，会让某个整体量
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
 取极值。</p>
 </blockquote>
-<p>这个整体量叫“作用量”， 下面的 (L) 是拉格朗日量，
-常见情况下可以写成“动能减势能”。</p>
+<p>这个整体量叫“作用量”， 下面的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+是拉格朗日量， 常见情况下可以写成“动能减势能”。</p>
 <p>这里我想把一个容易误解的地方说清楚：</p>
 <blockquote>
 <p><strong>严格地说，它不是总在“最小化”作用量，
@@ -899,12 +948,22 @@ AGI 时代依然站得住的“世界观生成树”。</p>
 <p>很多经典情形下这个驻值恰好是最小值， 所以我们习惯说“最小作用量”；
 但从数学上，更稳妥的表述是“驻作用原理”。</p>
 <p>这件事之所以惊人，是因为它真的能推出熟悉的运动方程。</p>
-<p>比如一个质量为 (m) 的粒子在势能 (V(x)) 中运动， 取</p>
-<p>[ L = T - V = m^2 - V(x) ]</p>
+<p>比如一个质量为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+的粒子在势能
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
+中运动， 取</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mi>T</mi><mo>−</mo><mi>V</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><msup><mover><mi>x</mi><mo accent="true">̇</mo></mover><mn>2</mn></msup><mo>−</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+L = T - V = \frac12 m\dot{x}^2 - V(x)
+</annotation></semantics></math></p>
 <p>把它代入变分原理， 就会得到欧拉–拉格朗日方程：</p>
-<p>[ () - = 0 ]</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>∂</mi><mi>L</mi></mrow><mrow><mi>∂</mi><mover><mi>x</mi><mo accent="true">̇</mo></mover></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mfrac><mrow><mi>∂</mi><mi>L</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) - \frac{\partial L}{\partial x} = 0
+</annotation></semantics></math></p>
 <p>整理以后，就是</p>
-<p>[ m = - ]</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mover><mi>x</mi><mo accent="true">̈</mo></mover><mo>=</mo><mi>−</mi><mfrac><mrow><mi>d</mi><mi>V</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+m\ddot{x} = -\frac{dV}{dx}
+</annotation></semantics></math></p>
 <p>这其实就是牛顿第二定律在一维势场中的写法。</p>
 <p>也就是说：</p>
 <blockquote>
@@ -931,7 +990,7 @@ AGI 时代依然站得住的“世界观生成树”。</p>
 </blockquote>
 <p>我们现在没有更底层的答案。 在实践中，我们只是把它当成一条极其成功的
 <strong>工作公理</strong>： 假设系统满足
-(S=0)，然后看能否推出与现实一致的规律。</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>S</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta S=0</annotation></semantics></math>，然后看能否推出与现实一致的规律。</p>
 <p>但无论如何，你已经在这里第一次看到一种很重要的倾向：</p>
 <blockquote>
 <p><strong>自然界常常能够被写成“在约束下选取极值路径”的系统。</strong></p>
@@ -1792,7 +1851,9 @@ AGI，并尝试制造新的智能载体。</li>
 这样系统才可能从“均匀响应”跳进一种新的、有结构的状态。</p></li>
 </ol>
 <p>在非平衡热力学里，常用一个简单的熵分解来刻画这类系统：</p>
-<p>[ dS = d_e S + d_i S ]</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>S</mi><mo>=</mo><msub><mi>d</mi><mi>e</mi></msub><mi>S</mi><mo>+</mo><msub><mi>d</mi><mi>i</mi></msub><mi>S</mi></mrow><annotation encoding="application/x-tex">
+dS = d_e S + d_i S
+</annotation></semantics></math></p>
 <ul>
 <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">dS</annotation></semantics></math>：系统自身熵的变化；</li>
 <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>e</mi></msub><mi>S</mi></mrow><annotation encoding="application/x-tex">d_e S</annotation></semantics></math>：与环境交换带来的熵流；</li>
@@ -2039,7 +2100,9 @@ AGI，并尝试制造新的智能载体。</li>
 </blockquote>
 <p>这一定义先抓住了生命和火焰、台风、冰箱这些普通耗散结构的共同点：它们都不能脱离能量流单独存在。只要交换停止，结构就会衰败，回到更接近平衡的状态。</p>
 <p>因此，任何生命体都要服从这条冷静的约束：</p>
-<p>[ S_{} + S_{} ]</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mi>S</mi><mtext mathvariant="normal">系统</mtext></msub><mo>+</mo><mi mathvariant="normal">Δ</mi><msub><mi>S</mi><mtext mathvariant="normal">环境</mtext></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+\Delta S_{\text{系统}} + \Delta S_{\text{环境}} \ge 0
+</annotation></semantics></math></p>
 <p>如果系统内部要保持相对低熵、有组织，它就必须把更大的熵增“转嫁”给环境。薛定谔说生命“以负熵为食”，用现代一点的语言，更准确的表达是：</p>
 <blockquote>
 <p><strong>生命靠持续消耗自由能，来推迟自身滑向平衡的命运。</strong></p>
