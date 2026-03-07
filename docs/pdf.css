@@ -1,0 +1,176 @@
+:root {
+  --ink: #0f172a;
+  --muted: #4b5563;
+  --accent: #0f766e;
+  --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "PingFang SC", "Times New Roman", serif;
+  --sans: "Noto Sans SC", "PingFang SC", "Helvetica Neue", "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", "SFMono-Regular", "Menlo", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  padding: 14mm 16mm 22mm;
+  max-width: 700px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 16.5px;
+  line-height: 1.75;
+  background: #ffffff;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@page {
+  margin: 20mm 18mm 22mm;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #0b1f33;
+  margin: 28px 0 12px;
+}
+
+h1 {
+  font-size: 34px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.title {
+  font-size: 36px;
+  margin-bottom: 6px;
+}
+
+.author,
+.date {
+  text-align: center;
+  color: var(--muted);
+  margin: 0 0 6px;
+  font-family: var(--sans);
+}
+
+h2 {
+  font-size: 26px;
+  page-break-before: always;
+}
+
+body h2:first-of-type {
+  page-break-before: avoid;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+#TOC {
+  page-break-after: always;
+  padding-top: 4px;
+}
+
+#TOC h1 {
+  text-align: left;
+  margin-top: 0;
+}
+
+#TOC ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 0;
+  color: var(--muted);
+}
+
+#TOC li {
+  margin: 6px 0;
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+ul,
+ol {
+  margin: 0 0 16px 22px;
+  padding: 0;
+}
+
+li + li {
+  margin-top: 6px;
+}
+
+blockquote {
+  margin: 18px 0;
+  padding: 14px 18px;
+  background: #f5f7fb;
+  border-left: 4px solid var(--accent);
+  color: #0f172a;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 28px 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.95em;
+  background: #f1f5f9;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+pre {
+  background: #f1f5f9;
+  padding: 12px;
+  border-radius: 10px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+}
+
+th,
+td {
+  border: 1px solid #d8dee9;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+math {
+  font-family: "Latin Modern Math", "STIX Two Math", "Noto Sans Math", "Cambria Math", serif;
+}
+
+math[display="block"],
+.math.display {
+  display: block;
+  margin: 14px 0;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+}
