@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 CONFIG = ROOT / "_config.yml"
 SITE_CSS = "assets/css/site.css"
-PAGE_SOURCES = [Path("Preface.md")] + [Path(f"Chapter{i}.md") for i in range(1, 11)]
+PAGE_SOURCES = [Path("foreword.md"), Path("Preface.md")] + [Path(f"Chapter{i}.md") for i in range(1, 11)]
 
 
 def read_simple_yaml(path: Path) -> dict[str, str]:
@@ -77,6 +77,7 @@ def build_page(
     description: str,
     content_html: str,
     nav_html: str,
+    first_page_url: str,
     next_item: dict[str, str] | None,
 ) -> str:
     next_html = ""
@@ -120,7 +121,7 @@ def build_page(
   <div class="scrollbar" aria-hidden="true"></div>
   <header class="site-shell">
     <div class="site-meta">
-      <a class="brand" href="Preface.html">{html.escape(brand_title)}</a>
+      <a class="brand" href="{html.escape(first_page_url)}">{html.escape(brand_title)}</a>
       <p class="tagline">{html.escape(tagline)}</p>
     </div>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -220,17 +221,17 @@ def build_page(
 """
 
 
-def build_index(site_title: str) -> str:
+def build_index(site_title: str, first_page_url: str) -> str:
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=Preface.html">
+  <meta http-equiv="refresh" content="0; url={html.escape(first_page_url)}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{html.escape(site_title)}</title>
 </head>
 <body>
-  <p>跳转中… 如果没有自动跳转，请打开 <a href="Preface.html">前言</a>。</p>
+  <p>跳转中… 如果没有自动跳转，请打开 <a href="{html.escape(first_page_url)}">首页正文</a>。</p>
 </body>
 </html>
 """
@@ -247,6 +248,7 @@ def main() -> None:
     for src in PAGE_SOURCES:
         title = extract_heading_title(DOCS / src)
         nav_items.append({"source": src.name, "url": src.with_suffix(".html").name, "title": title})
+    first_page_url = nav_items[0]["url"]
 
     for idx, item in enumerate(nav_items):
         source_path = DOCS / item["source"]
@@ -261,11 +263,12 @@ def main() -> None:
             description=description,
             content_html=body_html,
             nav_html=nav_html,
+            first_page_url=first_page_url,
             next_item=next_item,
         )
         (DOCS / item["url"]).write_text(page_html, encoding="utf-8")
 
-    (DOCS / "index.html").write_text(build_index(site_title), encoding="utf-8")
+    (DOCS / "index.html").write_text(build_index(site_title, first_page_url), encoding="utf-8")
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
 
 
