@@ -42,10 +42,7 @@ def render_markdown(path: Path) -> str:
         [
             "pandoc",
             str(path),
-            "--from",
-            "markdown+tex_math_dollars+tex_math_single_backslash",
-            "--to",
-            "html5",
+            "--standalone",
             "--mathjax",
         ],
         check=True,
@@ -54,6 +51,15 @@ def render_markdown(path: Path) -> str:
         cwd=ROOT,
     )
     html_body = result.stdout
+    body_match = re.search(r"<body[^>]*>(.*)</body>", html_body, re.DOTALL)
+    if body_match:
+        html_body = body_match.group(1).strip()
+    html_body = re.sub(
+        r'<header id="title-block-header">.*?</header>',
+        "",
+        html_body,
+        flags=re.DOTALL,
+    ).strip()
     html_body = re.sub(r'href="([^"]+)\.md"', r'href="\1.html"', html_body)
     return html_body
 
@@ -103,19 +109,9 @@ def build_page(
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Work+Sans:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{SITE_CSS}">
-  <script>
-    window.MathJax = {{
-      tex: {{
-        inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
-        displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],
-        processEscapes: true
-      }},
-      svg: {{
-        fontCache: 'global'
-      }}
-    }};
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js" type="text/javascript"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
 </head>
 <body>
   <div class="scrollbar" aria-hidden="true"></div>
