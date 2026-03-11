@@ -67,6 +67,13 @@ body {
   gap: 4px;
 }
 
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
 .brand {
   font-family: var(--sans);
   font-size: 18px;
@@ -74,6 +81,7 @@ body {
   letter-spacing: 0.02em;
   color: var(--ink);
   text-decoration: none;
+  min-width: 0;
 }
 
 .tagline {
@@ -83,16 +91,16 @@ body {
 }
 
 .download-link {
-  align-self: flex-start;
-  margin-top: 8px;
-  padding: 10px 14px;
+  flex: 0 0 auto;
+  padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid rgba(15, 118, 110, 0.22);
   background: rgba(15, 118, 110, 0.08);
   color: var(--accent);
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
+  line-height: 1;
   text-decoration: none;
   box-shadow: 0 8px 24px rgba(15, 118, 110, 0.12);
 }
@@ -589,6 +597,10 @@ mjx-container[display="true"] {
   .site-meta {
     flex: 1;
     min-width: 0;
+  }
+
+  .brand-row {
+    padding-right: 52px;
   }
 
   .nav-toggle {
