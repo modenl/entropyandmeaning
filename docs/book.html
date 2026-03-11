@@ -6,169 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>从熵到意义：一棵统一世界观的生成树</title>
   <style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-
-ul.task-list[class]{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-font-size: inherit;
-width: 0.8em;
-margin: 0 0.8em 0.2em -1.6em;
-vertical-align: middle;
-}
-</style>
-  <style type="text/css">:root {
---ink: #0f172a;
---muted: #4b5563;
---accent: #0f766e;
---serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "PingFang SC", "Times New Roman", serif;
---sans: "Noto Sans SC", "PingFang SC", "Helvetica Neue", "Segoe UI", sans-serif;
---mono: "JetBrains Mono", "SFMono-Regular", "Menlo", monospace;
-}
-*,
-*::before,
-*::after {
-box-sizing: border-box;
-}
-body {
-margin: 0 auto;
-padding: 14mm 16mm 22mm;
-max-width: 700px;
-color: var(--ink);
-font-family: var(--serif);
-font-size: 16.5px;
-line-height: 1.75;
-background: #ffffff;
-text-rendering: optimizeLegibility;
--webkit-font-smoothing: antialiased;
-}
-@page {
-margin: 20mm 18mm 22mm;
-}
-h1,
-h2,
-h3,
-h4,
-h5 {
-font-family: var(--sans);
-font-weight: 600;
-letter-spacing: 0.01em;
-color: #0b1f33;
-margin: 28px 0 12px;
-}
-h1 {
-font-size: 34px;
-text-align: center;
-margin-top: 10px;
-}
-.title {
-font-size: 36px;
-margin-bottom: 6px;
-}
-.author,
-.date {
-text-align: center;
-color: var(--muted);
-margin: 0 0 6px;
-font-family: var(--sans);
-}
-h2 {
-font-size: 26px;
-page-break-before: always;
-}
-body h2:first-of-type {
-page-break-before: avoid;
-}
-h3 {
-font-size: 21px;
-}
-h4 {
-font-size: 18px;
-}
-#TOC {
-page-break-after: always;
-padding-top: 4px;
-}
-#TOC h1 {
-text-align: left;
-margin-top: 0;
-}
-#TOC ul {
-list-style: none;
-padding-left: 0;
-margin: 12px 0 0;
-color: var(--muted);
-}
-#TOC li {
-margin: 6px 0;
-}
-p {
-margin: 0 0 16px;
-}
-ul,
-ol {
-margin: 0 0 16px 22px;
-padding: 0;
-}
-li + li {
-margin-top: 6px;
-}
-blockquote {
-margin: 18px 0;
-padding: 14px 18px;
-background: #f5f7fb;
-border-left: 4px solid var(--accent);
-color: #0f172a;
-}
-hr {
-border: 0;
-border-top: 1px solid #e2e8f0;
-margin: 28px 0;
-}
-a {
-color: var(--accent);
-text-decoration: none;
-}
-code {
-font-family: var(--mono);
-font-size: 0.95em;
-background: #f1f5f9;
-padding: 2px 4px;
-border-radius: 4px;
-}
-pre {
-background: #f1f5f9;
-padding: 12px;
-border-radius: 10px;
-overflow: auto;
-}
-table {
-width: 100%;
-border-collapse: collapse;
-margin: 18px 0;
-}
-th,
-td {
-border: 1px solid #d8dee9;
-padding: 8px 10px;
-text-align: left;
-}
-math {
-font-family: "Latin Modern Math", "STIX Two Math", "Noto Sans Math", "Cambria Math", serif;
-}
-math[display="block"],
-.math.display {
-display: block;
-margin: 14px 0;
-text-align: center;
-}
-img {
-max-width: 100%;
-}
-</style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="pdf.css" />
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
 </head>
 <body>
 <header id="title-block-header">
@@ -179,25 +35,35 @@ max-width: 100%;
 <ul>
 <li><a href="#序" id="toc-序">序</a></li>
 <li><a href="#前言" id="toc-前言">前言</a></li>
-<li><a href="#第一章-公理时间与因果科学思维的底层操作系统" id="toc-第一章-公理时间与因果科学思维的底层操作系统">第一章
+<li><a href="#第一章-公理时间与因果科学思维的底层操作系统"
+id="toc-第一章-公理时间与因果科学思维的底层操作系统">第一章
 公理、时间与因果：科学思维的底层操作系统</a></li>
-<li><a href="#第二章-数学与物理用同一套语言生成世界" id="toc-第二章-数学与物理用同一套语言生成世界">第二章
+<li><a href="#第二章-数学与物理用同一套语言生成世界"
+id="toc-第二章-数学与物理用同一套语言生成世界">第二章
 数学与物理：用同一套语言<strong>生成</strong>世界</a></li>
-<li><a href="#第三章-生成的宇宙从基本粒子到生命与智能" id="toc-第三章-生成的宇宙从基本粒子到生命与智能">第三章
+<li><a href="#第三章-生成的宇宙从基本粒子到生命与智能"
+id="toc-第三章-生成的宇宙从基本粒子到生命与智能">第三章
 生成的宇宙：从基本粒子到生命与智能</a></li>
-<li><a href="#第四章-进化论耗散系统中的核心律动" id="toc-第四章-进化论耗散系统中的核心律动">第四章
+<li><a href="#第四章-进化论耗散系统中的核心律动"
+id="toc-第四章-进化论耗散系统中的核心律动">第四章
 进化论：耗散系统中的核心律动</a></li>
-<li><a href="#第五章-宇宙演化大尺度耗散结构与自组织秩序" id="toc-第五章-宇宙演化大尺度耗散结构与自组织秩序">第五章
+<li><a href="#第五章-宇宙演化大尺度耗散结构与自组织秩序"
+id="toc-第五章-宇宙演化大尺度耗散结构与自组织秩序">第五章
 宇宙演化：大尺度耗散结构与自组织秩序</a></li>
-<li><a href="#第六章-生命的产生与分化最成功的耗散结构实验" id="toc-第六章-生命的产生与分化最成功的耗散结构实验">第六章
+<li><a href="#第六章-生命的产生与分化最成功的耗散结构实验"
+id="toc-第六章-生命的产生与分化最成功的耗散结构实验">第六章
 生命的产生与分化：最成功的耗散结构实验</a></li>
-<li><a href="#第七章-智能与主观体验把意识从神坛上拿下来" id="toc-第七章-智能与主观体验把意识从神坛上拿下来">第七章
+<li><a href="#第七章-智能与主观体验把意识从神坛上拿下来"
+id="toc-第七章-智能与主观体验把意识从神坛上拿下来">第七章
 智能与主观体验：把意识从神坛上拿下来</a></li>
-<li><a href="#第八章-人工智能前沿从大模型到-agi-的可能路径" id="toc-第八章-人工智能前沿从大模型到-agi-的可能路径">第八章
+<li><a href="#第八章-人工智能前沿从大模型到-agi-的可能路径"
+id="toc-第八章-人工智能前沿从大模型到-agi-的可能路径">第八章
 人工智能前沿：从大模型到 AGI 的可能路径</a></li>
-<li><a href="#第九章-人智能与宇宙存在的意义与宇宙智能假说" id="toc-第九章-人智能与宇宙存在的意义与宇宙智能假说">第九章
+<li><a href="#第九章-人智能与宇宙存在的意义与宇宙智能假说"
+id="toc-第九章-人智能与宇宙存在的意义与宇宙智能假说">第九章
 人、智能与宇宙：存在的意义与宇宙智能假说</a></li>
-<li><a href="#第十章-知识的几何如何用这本书长出自己的世界观" id="toc-第十章-知识的几何如何用这本书长出自己的世界观">第十章
+<li><a href="#第十章-知识的几何如何用这本书长出自己的世界观"
+id="toc-第十章-知识的几何如何用这本书长出自己的世界观">第十章
 知识的几何：如何用这本书长出自己的世界观</a></li>
 </ul>
 </nav>
@@ -270,7 +136,8 @@ AI
 <p>书里把这种更深层的学习，称作“知识换基”。这个说法不是教条，也不是神秘主义，而是一条便于思考的工作假说：当你真的理解了某个领域，发生变化的往往不只是你记住了几条新结论，而是你组织旧经验、连接新问题的坐标系本身，开始被重写。</p>
 <p>这也是为什么，本书虽然一路从宇宙写到意义，最后关心的仍然是一个很朴素的问题：这套框架究竟能不能进入你的判断方式，而不只是停在阅读体验里。</p>
 <hr />
-<h3 id="为什么现在仍然值得认真读一本书">为什么现在仍然值得认真读一本书？</h3>
+<h3
+id="为什么现在仍然值得认真读一本书">为什么现在仍然值得认真读一本书？</h3>
 <p>在大模型时代，这个问题确实绕不过去。</p>
 <p>如果 AI
 可以帮你总结、对比、提炼、改写，甚至替你搭出一份看起来相当漂亮的知识框架，那么慢慢读一本书，还有什么意义？</p>
@@ -343,7 +210,8 @@ AI
 <blockquote>
 <p><strong>任何结论都不是凭空悬着的，它总要踩在某些先承认的东西上。</strong></p>
 </blockquote>
-<h4 id="zfc现代数学的世界构建说明书">ZFC：现代数学的“世界构建说明书”</h4>
+<h4
+id="zfc现代数学的世界构建说明书">ZFC：现代数学的“世界构建说明书”</h4>
 <p>20
 世纪的数学家把这件事推进得非常彻底：他们试图用一套足够简洁的公理，来承托几乎整个现代数学。最常被提到的版本，就是
 <strong>ZFC 集合论公理体系</strong>。</p>
@@ -399,7 +267,8 @@ AI
 <p>这一步，也是在替后面几章清理地基。</p>
 <p>接下来，我们把这种视角从数学平移到更贴近日常经验、也更容易被误以为“天经地义”的对象上：<strong>时间</strong>。</p>
 <hr />
-<h3 id="时间观你默认的也可能只是默认值">时间观：你默认的，也可能只是默认值</h3>
+<h3
+id="时间观你默认的也可能只是默认值">时间观：你默认的，也可能只是默认值</h3>
 <p>从公理谈到时间，看起来跨度很大，实际上只是把问题从“什么几何是真的”换成了：</p>
 <blockquote>
 <p><strong>“时间究竟是什么样”这件事，本身是不是也依赖于某种前提？</strong></p>
@@ -447,18 +316,19 @@ AI
 <strong>时间的样子，也许没有你小时候想的那样理所当然。</strong></p>
 <p>日常生活里，我们当然仍然离不开“昨天、今天、明天”的语言。<br />
 但在世界观层面，意识到“流逝感”未必是底层物理的基本成分，本身就是一次系统升级。</p>
-<h4 id="量子幺正演化底层过程并不天然偏爱未来">量子幺正演化：底层过程并不天然偏爱未来</h4>
+<h4
+id="量子幺正演化底层过程并不天然偏爱未来">量子幺正演化：底层过程并不天然偏爱未来</h4>
 <p>如果把镜头再往微观推进，时间会显得更反直觉。</p>
 <p>在量子力学里，封闭系统的时间演化由 Schrödinger 方程控制：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ℏ</mi><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>t</mi></mrow></mfrac><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mover><mi>H</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">
-i\hbar \frac{\partial}{\partial t}|\Psi(t)\rangle = \hat{H}|\Psi(t)\rangle
-</annotation></semantics></math></p>
+<p><span class="math display">\[
+i\hbar \frac{\partial}{\partial t}|\Psi(t)\rangle =
+\hat{H}|\Psi(t)\rangle
+\]</span></p>
 <p>在合适条件下，它可以写成：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mi>U</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">⟩</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>U</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mover><mi>H</mi><mo accent="true">̂</mo></mover><mi>t</mi><mi>/</mi><mi>ℏ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">\[
 |\Psi(t)\rangle = U(t)|\Psi(0)\rangle,\quad U(t)=e^{-i\hat{H}t/\hbar}
-</annotation></semantics></math></p>
-<p>这个演化算符
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">U(t)</annotation></semantics></math>
+\]</span></p>
+<p>这个演化算符 <span class="math inline">\(U(t)\)</span>
 是<strong>幺正</strong>的。<br />
 幺正最值得你记住的含义，不是术语本身，而是这三件事：</p>
 <ul>
@@ -502,7 +372,8 @@ i\hbar \frac{\partial}{\partial t}|\Psi(t)\rangle = \hat{H}|\Psi(t)\rangle
 <p><strong>在这样的时间图景里，我们凭什么说一个东西是“原因”，另一个是“结果”？</strong></p>
 </blockquote>
 <hr />
-<h3 id="从逻辑到因果概率只能回答一半问题">从逻辑到因果：概率只能回答一半问题</h3>
+<h3
+id="从逻辑到因果概率只能回答一半问题">从逻辑到因果：概率只能回答一半问题</h3>
 <p>传统逻辑关心的是：在前提 A、B、C 之下，命题 D 能不能推出。<br />
 概率论把这个问题柔化成：在已知 X 的条件下，Y 有多大概率出现。</p>
 <p>这很重要，但还不够。</p>
@@ -525,10 +396,10 @@ i\hbar \frac{\partial}{\partial t}|\Psi(t)\rangle = \hat{H}|\Psi(t)\rangle
 <p>在 Pearl 的语言里，最核心的新增动作，是 <strong>do</strong>。</p>
 <p>我们要区分两类看起来很像、实则完全不同的问题：</p>
 <ul>
-<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>∣</mo><mi>X</mi><mo>=</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(Y\mid X=x)</annotation></semantics></math>：观察到
-X=x 时，Y 的分布；</li>
-<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>∣</mo><mtext mathvariant="normal">do</mtext><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo>=</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(Y\mid \text{do}(X=x))</annotation></semantics></math>：如果我强行把
-X 设成 x，Y 的分布。</li>
+<li><span class="math inline">\(P(Y\mid X=x)\)</span>：观察到 X=x 时，Y
+的分布；</li>
+<li><span class="math inline">\(P(Y\mid
+\text{do}(X=x))\)</span>：如果我强行把 X 设成 x，Y 的分布。</li>
 </ul>
 <p>这两者的差别，不在符号，而在你对世界做没做“改线”这件事。</p>
 <blockquote>
@@ -541,17 +412,16 @@ X 设成 x，Y 的分布。</li>
 <li>Z：某种基因因素，同时影响吸烟倾向和肺癌风险。</li>
 </ul>
 <p>可以写成：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>→</mo><mi>X</mi><mo>→</mo><mi>Y</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>Z</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">\[
 Z \rightarrow X \rightarrow Y,\quad Z \rightarrow Y
-</annotation></semantics></math></p>
-<p>如果你只看
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>∣</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(Y\mid X)</annotation></semantics></math>，你混在一起看到的是：</p>
+\]</span></p>
+<p>如果你只看 <span class="math inline">\(P(Y\mid
+X)\)</span>，你混在一起看到的是：</p>
 <ul>
 <li>X 对 Y 的影响；</li>
 <li>以及 Z 同时推高 X 和 Y 所造成的关联。</li>
 </ul>
-<p>但
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>∣</mo><mtext mathvariant="normal">do</mtext><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(Y\mid \text{do}(X))</annotation></semantics></math>
+<p>但 <span class="math inline">\(P(Y\mid \text{do}(X))\)</span>
 想问的是另一件事：</p>
 <blockquote>
 <p>如果我把通向 X 的那堆来路先剪断， 再强行规定“吸”或“不吸”， 那么 Y
@@ -565,7 +435,8 @@ Z \rightarrow X \rightarrow Y,\quad Z \rightarrow Y
 更想知道：如果我改动某个环节，世界会怎样重新组织。</strong></p>
 </blockquote>
 <hr />
-<h3 id="控制变量控制的不是数量而是路径">控制变量：控制的不是数量，而是路径</h3>
+<h3
+id="控制变量控制的不是数量而是路径">控制变量：控制的不是数量，而是路径</h3>
 <p>“控制变量”这句话，从小学实验课到社会科学方法论都在出现。<br />
 但如果没有因果图打底，它很容易被误解成：</p>
 <blockquote>
@@ -578,7 +449,8 @@ Z \rightarrow X \rightarrow Y,\quad Z \rightarrow Y
 <li>你控制的动作，会不会反而打开一条原本不存在的假路径？</li>
 </ol>
 <p>先看一个最简单的混杂例子。</p>
-<h4 id="鞋码与阅读能力该控的是共同原因">鞋码与阅读能力：该控的是共同原因</h4>
+<h4
+id="鞋码与阅读能力该控的是共同原因">鞋码与阅读能力：该控的是共同原因</h4>
 <p>假设你研究：</p>
 <ul>
 <li>X：鞋码；</li>
@@ -594,9 +466,9 @@ Z \rightarrow X \rightarrow Y,\quad Z \rightarrow Y
 年龄越大，阅读能力通常也越强。<br />
 也就是说，Z 同时影响 X 和 Y。</p>
 <p>这就是典型混杂：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>→</mo><mi>X</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>Z</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">\[
 Z \rightarrow X,\quad Z \rightarrow Y
-</annotation></semantics></math></p>
+\]</span></p>
 <p>在这种情况下，应该控制的是 <strong>共同原因</strong>。<br />
 比如只在同龄组里比较，或者在统计模型里把年龄单独放进去。<br />
 一旦做了这个动作，鞋码和阅读之间那条看似显著的关系，通常就会大幅消失。</p>
@@ -605,7 +477,8 @@ Z \rightarrow X,\quad Z \rightarrow Y
 <p><strong>控制变量的本质，不是给模型塞更多列，
 而是关掉那些会把假关联输送进来的后门路径。</strong></p>
 </blockquote>
-<h4 id="篮球训练与身高不是所有变量都该控">篮球训练与身高：不是所有变量都该控</h4>
+<h4
+id="篮球训练与身高不是所有变量都该控">篮球训练与身高：不是所有变量都该控</h4>
 <p>再看一个更容易犯错的例子。</p>
 <ul>
 <li>X：每周篮球训练时长；</li>
@@ -619,9 +492,9 @@ Z \rightarrow X,\quad Z \rightarrow Y
 <li>身体条件 U 又影响身高（U→Y）。</li>
 </ul>
 <p>于是有：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>C</mi><mo>←</mo><mi>U</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>U</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">\[
 X \rightarrow C \leftarrow U,\quad U \rightarrow Y
-</annotation></semantics></math></p>
+\]</span></p>
 <p>这里的 C 是 <strong>碰撞点</strong>：它是两条因果链的共同结果。</p>
 <p>如果你只研究“已经入选校队的人”，相当于把 C 固定住了。<br />
 这个动作会产生一个非常危险的副作用：<br />
@@ -644,7 +517,8 @@ X \rightarrow C \leftarrow U,\quad U \rightarrow Y
 之所以能够说“原因在前、结果在后”，正是因为我们在宏观世界里采用了带方向的时间描述。<br />
 <strong>时间箭头，是因果箭头的背景板。</strong></p>
 <hr />
-<h3 id="一个现实缩影随机双盲为什么会成为金标准">一个现实缩影：随机双盲为什么会成为金标准</h3>
+<h3
+id="一个现实缩影随机双盲为什么会成为金标准">一个现实缩影：随机双盲为什么会成为金标准</h3>
 <p>如果前面关于 do
 算子、混杂、碰撞点的讨论还显得偏抽象，那么现代医学里的
 <strong>随机双盲临床试验</strong>，就是这一整套逻辑在现实中最典型的工程落点。</p>
@@ -659,8 +533,8 @@ X \rightarrow C \leftarrow U,\quad U \rightarrow Y
 <li>病情较轻的人，更容易被安排尝试实验疗法；</li>
 <li>医生也可能把“看起来更有希望”的病人优先推入某个方案。</li>
 </ul>
-<p>这些因素同时影响“谁吃药”和“谁康复”，于是你看到的
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>∣</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(Y\mid X)</annotation></semantics></math>
+<p>这些因素同时影响“谁吃药”和“谁康复”，于是你看到的 <span
+class="math inline">\(P(Y\mid X)\)</span>
 根本不等于药物本身的因果效应。</p>
 <p><strong>随机化</strong>做的第一件事，就是强行插入一个近似纯随机节点：</p>
 <blockquote>
@@ -669,8 +543,8 @@ X \rightarrow C \leftarrow U,\quad U \rightarrow Y
 </blockquote>
 <p>这么做的效果是：<br />
 在足够大的样本里，治疗组和对照组在各种已知和未知混杂因素上，会趋向统计均衡。<br />
-于是两组结果的差别，更接近
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">do</mtext><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\text{do}(X)</annotation></semantics></math>
+于是两组结果的差别，更接近 <span
+class="math inline">\(\text{do}(X)\)</span>
 所对应的因果效应，而不只是现实世界里自带偏置的观察差异。</p>
 <p>但事情还没完。<br />
 即便分组是随机的，人的期待、暗示和记录偏差仍然会制造新路径：</p>
@@ -685,9 +559,8 @@ X \rightarrow C \leftarrow U,\quad U \rightarrow Y
 <li>“知道分组 → 医生判断偏移 → 结果记录偏移”</li>
 </ul>
 <p>再配上足够样本量、规范随访和合适的统计分析，<br />
-我们就得到了一种尽可能逼近
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>∣</mo><mtext mathvariant="normal">do</mtext><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(Y\mid \text{do}(X))</annotation></semantics></math>
-的现实方案。</p>
+我们就得到了一种尽可能逼近 <span class="math inline">\(P(Y\mid
+\text{do}(X))\)</span> 的现实方案。</p>
 <p>所以，随机双盲试验之所以重要，不是因为它有某种仪式感，而是因为它恰好体现了这整章一直在讲的那条主线：</p>
 <blockquote>
 <p><strong>真正成熟的科学方法，
@@ -775,12 +648,12 @@ AGI 时代依然站得住的“世界观生成树”。</p>
 </ul></li>
 <li><p><strong>再从规则里“长”出结构</strong></p>
 <ul>
-<li>把 0 定义成空集
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⌀</mi><annotation encoding="application/x-tex">\varnothing</annotation></semantics></math>；</li>
-<li>把 1 定义成
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>⌀</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\varnothing\}</annotation></semantics></math>；</li>
-<li>把 2 定义成
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>⌀</mi><mo>,</mo><mo stretchy="false" form="prefix">{</mo><mi>⌀</mi><mo stretchy="false" form="postfix">}</mo><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\varnothing,\{\varnothing\}\}</annotation></semantics></math>……
+<li>把 0 定义成空集 <span
+class="math inline">\(\varnothing\)</span>；</li>
+<li>把 1 定义成 <span
+class="math inline">\(\{\varnothing\}\)</span>；</li>
+<li>把 2 定义成 <span
+class="math inline">\(\{\varnothing,\{\varnothing\}\}\)</span>……
 再往上，就能一路定义整数、实数、向量空间、拓扑空间、流形、群。</li>
 </ul></li>
 <li><p><strong>最后在结构里推定理</strong></p>
@@ -836,7 +709,8 @@ AGI 时代依然站得住的“世界观生成树”。</p>
 而是在数学结构库里，挑出少数真正能贴住现实的形式。</p>
 <p>这里还要补一句：数学能生成形式世界，不等于现实世界“本质上就是数学”。更稳妥的说法是：数学提供了一组极其强大的可压缩结构，而物理负责告诉我们，哪几种结构恰好能长期贴住经验事实；这层区分必须在全书里始终保留。</p>
 <hr />
-<h3 id="物理在数学生成器里选一段剧本">物理：在数学生成器里选一段剧本</h3>
+<h3
+id="物理在数学生成器里选一段剧本">物理：在数学生成器里选一段剧本</h3>
 <p>回忆一下你熟悉的物理图景：</p>
 <ul>
 <li>行星绕恒星运行，可以写成轨道方程；</li>
@@ -873,10 +747,8 @@ AGI 时代依然站得住的“世界观生成树”。</p>
 <ul>
 <li><p>在日常速度和尺度上，</p>
 <ul>
-<li>我们采用
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>m</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">F=ma</annotation></semantics></math>
-和万有引力
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>G</mi><mfrac><mrow><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub></mrow><msup><mi>r</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">F=G\frac{m_1m_2}{r^2}</annotation></semantics></math>；</li>
+<li>我们采用 <span class="math inline">\(F=ma\)</span> 和万有引力 <span
+class="math inline">\(F=G\frac{m_1m_2}{r^2}\)</span>；</li>
 <li>再配上近似平直的空间和统一时间；</li>
 <li>这组规则就生成了经典力学世界。</li>
 </ul></li>
@@ -903,22 +775,18 @@ AGI 时代依然站得住的“世界观生成树”。</p>
 <h3 id="极简法则如何长出极复杂世界">极简法则，如何长出极复杂世界？</h3>
 <p>把几条经典公式并排摆开看：</p>
 <ul>
-<li>质能关系：
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+<li>质能关系： <span class="math display">\[
 E = mc^2
-</annotation></semantics></math></li>
-<li>万有引力：
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>G</mi><mfrac><mrow><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub></mrow><msup><mi>r</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">
+\]</span></li>
+<li>万有引力： <span class="math display">\[
 F = G\frac{m_1m_2}{r^2}
-</annotation></semantics></math></li>
-<li>牛顿第二定律：
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>m</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">
+\]</span></li>
+<li>牛顿第二定律： <span class="math display">\[
 F = ma
-</annotation></semantics></math></li>
-<li>理想气体状态方程：
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>V</mi><mo>=</mo><mi>n</mi><mi>R</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">
+\]</span></li>
+<li>理想气体状态方程： <span class="math display">\[
 PV = nRT
-</annotation></semantics></math></li>
+\]</span></li>
 </ul>
 <p>它们有一个共同特点：</p>
 <ol type="1">
@@ -928,8 +796,8 @@ PV = nRT
 </ol>
 <p>以万有引力为例：</p>
 <ul>
-<li>结合
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>m</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">F=ma</annotation></semantics></math>，可以得到近似椭圆轨道；</li>
+<li>结合 <span
+class="math inline">\(F=ma\)</span>，可以得到近似椭圆轨道；</li>
 <li>再往下，可以解释潮汐、彗星、星团运动；</li>
 <li>再加入相对论修正，还能解释水星近日点进动和引力透镜。</li>
 </ul>
@@ -938,16 +806,15 @@ PV = nRT
 <p>这些方程就像宇宙局部区域的“高压缩代码”。
 一段极短程序，生成了大批可以被观测的数据。</p>
 </blockquote>
-<p>这里最好再补一个更“手感化”的例子。 如果一个质量为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-的小球只受重力作用， 那么它满足</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>m</mi><mi>a</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>F</mi><mo>=</mo><mi>m</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">
+<p>这里最好再补一个更“手感化”的例子。 如果一个质量为 <span
+class="math inline">\(m\)</span> 的小球只受重力作用， 那么它满足</p>
+<p><span class="math display">\[
 F=ma,\qquad F=mg
-</annotation></semantics></math></p>
+\]</span></p>
 <p>于是直接得到</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">\[
 a=g
-</annotation></semantics></math></p>
+\]</span></p>
 <p>也就是说，它在竖直方向上始终以近似恒定的加速度下落。
 再积分一次得到速度随时间线性增长，再积分一次得到位移随时间二次增长。
 你熟悉的抛物线轨迹，并不是后来额外加上的“现象描述”，
@@ -959,21 +826,20 @@ a=g
 <strong>我们碰到的，可能真的是更深层的生成规则。</strong></li>
 </ul>
 <hr />
-<h3 id="最小作用量宇宙的第一条优化偏好">最小作用量：宇宙的第一条“优化偏好”</h3>
+<h3
+id="最小作用量宇宙的第一条优化偏好">最小作用量：宇宙的第一条“优化偏好”</h3>
 <p>如果说物理定律是剧本，
 那么最小作用量原理，就像很多剧本背后共享的一条导演规则。</p>
 <p>形式上，它写成：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><msubsup><mo>∫</mo><msub><mi>t</mi><mn>1</mn></msub><msub><mi>t</mi><mn>2</mn></msub></msubsup><mi>L</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>δ</mi><mi>S</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">\[
 S = \int_{t_1}^{t_2} L\,dt, \quad \delta S = 0
-</annotation></semantics></math></p>
+\]</span></p>
 <p>翻译成人话就是：</p>
 <blockquote>
 <p>在所有从起点到终点的可能路径里， 自然实际走的那条，会让某个整体量
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-取极值。</p>
+<span class="math inline">\(S\)</span> 取极值。</p>
 </blockquote>
-<p>这个整体量叫“作用量”， 下面的
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+<p>这个整体量叫“作用量”， 下面的 <span class="math inline">\(L\)</span>
 是拉格朗日量， 常见情况下可以写成“动能减势能”。</p>
 <p>这里我想把一个容易误解的地方说清楚：</p>
 <blockquote>
@@ -983,22 +849,20 @@ S = \int_{t_1}^{t_2} L\,dt, \quad \delta S = 0
 <p>很多经典情形下这个驻值恰好是最小值， 所以我们习惯说“最小作用量”；
 但从数学上，更稳妥的表述是“驻作用原理”。</p>
 <p>这件事之所以惊人，是因为它真的能推出熟悉的运动方程。</p>
-<p>比如一个质量为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-的粒子在势能
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V(x)</annotation></semantics></math>
-中运动， 取</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mi>T</mi><mo>−</mo><mi>V</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><msup><mover><mi>x</mi><mo accent="true">̇</mo></mover><mn>2</mn></msup><mo>−</mo><mi>V</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+<p>比如一个质量为 <span class="math inline">\(m\)</span> 的粒子在势能
+<span class="math inline">\(V(x)\)</span> 中运动， 取</p>
+<p><span class="math display">\[
 L = T - V = \frac12 m\dot{x}^2 - V(x)
-</annotation></semantics></math></p>
+\]</span></p>
 <p>把它代入变分原理， 就会得到欧拉–拉格朗日方程：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>∂</mi><mi>L</mi></mrow><mrow><mi>∂</mi><mover><mi>x</mi><mo accent="true">̇</mo></mover></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mfrac><mrow><mi>∂</mi><mi>L</mi></mrow><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
-\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) - \frac{\partial L}{\partial x} = 0
-</annotation></semantics></math></p>
+<p><span class="math display">\[
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) -
+\frac{\partial L}{\partial x} = 0
+\]</span></p>
 <p>整理以后，就是</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mover><mi>x</mi><mo accent="true">̈</mo></mover><mo>=</mo><mi>−</mi><mfrac><mrow><mi>d</mi><mi>V</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">\[
 m\ddot{x} = -\frac{dV}{dx}
-</annotation></semantics></math></p>
+\]</span></p>
 <p>这其实就是牛顿第二定律在一维势场中的写法。</p>
 <p>也就是说：</p>
 <blockquote>
@@ -1024,8 +888,9 @@ m\ddot{x} = -\frac{dV}{dx}
 它真的像在比较所有路径之后再做选择吗？</p>
 </blockquote>
 <p>我们现在没有更底层的答案。 在实践中，我们只是把它当成一条极其成功的
-<strong>工作公理</strong>： 假设系统满足
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>S</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta S=0</annotation></semantics></math>，然后看能否推出与现实一致的规律。</p>
+<strong>工作公理</strong>： 假设系统满足 <span
+class="math inline">\(\delta
+S=0\)</span>，然后看能否推出与现实一致的规律。</p>
 <p>但无论如何，你已经在这里第一次看到一种很重要的倾向：</p>
 <blockquote>
 <p><strong>自然界常常能够被写成“在约束下选取极值路径”的系统。</strong></p>
@@ -1159,7 +1024,8 @@ AI——先放回它们各自该在的位置上。</li>
 而是在前面规则允许的范围内，长出更高层级的组织方式。</strong></p>
 </blockquote>
 <hr />
-<h3 id="先给一张粗略时间刻度别在细节里丢掉顺序">先给一张粗略时间刻度：别在细节里丢掉顺序</h3>
+<h3
+id="先给一张粗略时间刻度别在细节里丢掉顺序">先给一张粗略时间刻度：别在细节里丢掉顺序</h3>
 <p>为了避免一上来就陷进术语，本章先给你一条非常粗略、只求定位不求背诵的时间刻度。
 你完全不需要记住每一个具体数字，但最好先有一个“远近感”：</p>
 <ul>
@@ -1181,7 +1047,8 @@ AGI，并尝试制造新的智能载体。</li>
 是彼此分裂的几门课。</p>
 <p>其实不是。 它们只是同一部片子里的不同景别。
 本章的任务，就是先把整条片子的大致分镜钉在墙上。</p>
-<h3 id="宇宙先要有一份配置文件规则与初态">宇宙先要有一份“配置文件”：规则与初态</h3>
+<h3
+id="宇宙先要有一份配置文件规则与初态">宇宙先要有一份“配置文件”：规则与初态</h3>
 <p>从生成论的角度看，一个宇宙要真正跑起来，至少需要两样东西：</p>
 <ol type="1">
 <li><p><strong>演化规则</strong>
@@ -1207,7 +1074,8 @@ AGI，并尝试制造新的智能载体。</li>
 </blockquote>
 <p>后面所有复杂故事，几乎都可以看成这条主线的不同版本。</p>
 <hr />
-<h3 id="第一段时间从高温场态到轻元素字母表">第一段时间：从高温场态到轻元素“字母表”</h3>
+<h3
+id="第一段时间从高温场态到轻元素字母表">第一段时间：从高温场态到轻元素“字母表”</h3>
 <p>如果把时间轴拉到最早，宇宙最初并不是“大大小小的球在一片空地里乱飞”，而更像是一种极端高温、极端高密、近乎均匀的场态。</p>
 <p>在这个阶段，真正基本的东西不是“桌子、石头、恒星”，甚至也不是我们直觉里的“小球粒子”，而是各种<strong>场</strong>及其允许的激发方式。
 随着宇宙膨胀、冷却，原本在高能条件下混在一起的相互作用逐渐分家，对称的状态开始破缺，稳定的粒子种类慢慢显现出来：</p>
@@ -1227,7 +1095,8 @@ AGI，并尝试制造新的智能载体。</li>
 </blockquote>
 <p>先有可重复、可稳定调用的基本角色，后面才谈得上更高层级的组织。</p>
 <hr />
-<h3 id="第二段时间原子出现宇宙第一次变得透明">第二段时间：原子出现，宇宙第一次变得“透明”</h3>
+<h3
+id="第二段时间原子出现宇宙第一次变得透明">第二段时间：原子出现，宇宙第一次变得“透明”</h3>
 <p>继续往后，宇宙还在膨胀，温度继续下降。</p>
 <p>大约在诞生后 38
 万年左右，自由电子终于不再总被高能光子打散，可以与质子和氦核结合，形成稳定的中性原子。
@@ -1249,7 +1118,8 @@ AGI，并尝试制造新的智能载体。</li>
 它更像是一张几乎平滑、但藏着细微纹理的底纸。
 而后面几乎所有大尺度结构，都会沿着这些早期纹理慢慢浮现出来。</p>
 <hr />
-<h3 id="第三段时间引力接棒把微小起伏雕成宇宙网">第三段时间：引力接棒，把微小起伏雕成宇宙网</h3>
+<h3
+id="第三段时间引力接棒把微小起伏雕成宇宙网">第三段时间：引力接棒，把微小起伏雕成宇宙网</h3>
 <p>接下来登场的主角，是引力。</p>
 <p>在前面的阶段里，宇宙更像是在准备材料、降低温度、清理舞台；
 从这里开始，引力真正承担起“雕刻大尺度结构”的任务。</p>
@@ -1278,7 +1148,8 @@ AGI，并尝试制造新的智能载体。</li>
 本章先只在时间线上给它钉一个位置：
 <strong>先有引力放大结构，后有恒星、行星以及更精细的局部舞台。</strong></p>
 <hr />
-<h3 id="第四段时间恒星点亮元素周期表被重新写丰富">第四段时间：恒星点亮，元素周期表被重新写丰富</h3>
+<h3
+id="第四段时间恒星点亮元素周期表被重新写丰富">第四段时间：恒星点亮，元素周期表被重新写丰富</h3>
 <p>当某些气体云在引力作用下坍缩到足够致密、足够炽热时，恒星便被点燃了。</p>
 <p>恒星的重要性，不只是“会发光”，而是它们把宇宙从“只会写氢和氦的简略文字”，推进到可以书写复杂化学的阶段。</p>
 <p>在恒星内部，核聚变逐步把轻元素“烧”成更重的元素：</p>
@@ -1300,7 +1171,8 @@ AGI，并尝试制造新的智能载体。</li>
 <p>所以，恒星在时间轴上的意义，并不只是一个天文学节点，
 它其实是整棵生成树上非常关键的一次“材料升级”。</p>
 <hr />
-<h3 id="第五段时间行星系统形成局部稳定舞台出现">第五段时间：行星系统形成，局部稳定舞台出现</h3>
+<h3
+id="第五段时间行星系统形成局部稳定舞台出现">第五段时间：行星系统形成，局部稳定舞台出现</h3>
 <p>有了恒星和更丰富的元素，宇宙还差最后一步舞台搭建：<strong>局部、长期、相对稳定的行星环境。</strong></p>
 <p>在年轻恒星周围，旋转的气体和尘埃盘开始经历一段漫长的聚合过程：</p>
 <ul>
@@ -1326,7 +1198,8 @@ AGI，并尝试制造新的智能载体。</li>
 <p>这就是为什么后面第五章和第六章虽然会分别讨论大尺度耗散结构与生命起源，
 但在时间线上，它们都要回到这里来找自己的落脚点。</p>
 <hr />
-<h3 id="第六段时间化学网络开始变复杂生命的门槛被碰到">第六段时间：化学网络开始变复杂，生命的门槛被碰到</h3>
+<h3
+id="第六段时间化学网络开始变复杂生命的门槛被碰到">第六段时间：化学网络开始变复杂，生命的门槛被碰到</h3>
 <p>当一颗行星同时拥有元素、能量流和足够长的稳定窗口时，复杂化学就不再只是偶然点状事件，而开始变成一个能够持续刷新的过程。</p>
 <p>在这一阶段，真正值得关注的不是某一个具体分子，而是几类现象开始出现：</p>
 <ul>
@@ -1353,7 +1226,8 @@ AGI，并尝试制造新的智能载体。</li>
 <p>一旦这三件事被捆在一起，宇宙就跨过了一道真正重要的门槛：
 时间不再只是“流逝”，它第一次开始变成<strong>可以积累历史信息</strong>的东西。</p>
 <hr />
-<h3 id="第七段时间生命出现进化接管时间">第七段时间：生命出现，进化接管时间</h3>
+<h3
+id="第七段时间生命出现进化接管时间">第七段时间：生命出现，进化接管时间</h3>
 <p>生命一旦启动，宇宙的生成逻辑就发生了一次决定性的升级。</p>
 <p>在生命之前，结构当然也会形成、保留、消散；
 但这种保留主要依赖物理和化学的稳定性。
@@ -1383,7 +1257,8 @@ AGI，并尝试制造新的智能载体。</li>
 <p>从那以后，复杂性不再只是“物理自组织的结果”，
 它还开始受到一整套会累积经验的机制推动。</p>
 <hr />
-<h3 id="第八段时间神经系统出现宇宙开始在内部建模自己">第八段时间：神经系统出现，宇宙开始在内部建模自己</h3>
+<h3
+id="第八段时间神经系统出现宇宙开始在内部建模自己">第八段时间：神经系统出现，宇宙开始在内部建模自己</h3>
 <p>生命继续向前推进，并不会自动产生智能。
 在很长很长一段时间里，地球上的生命主要仍是单细胞和简单多细胞结构。
 但随着生态压力变复杂，某些谱系逐渐发展出更快的感知、更灵活的行动以及更密集的信息处理网络。</p>
@@ -1420,7 +1295,8 @@ AGI，并尝试制造新的智能载体。</li>
 它们不是一开场就与宇宙同在的神秘属性，
 而是非常晚才出现的一种高阶组织方式。</p>
 <hr />
-<h3 id="第九段时间文化与技术加速人工智能成为新支线">第九段时间：文化与技术加速，人工智能成为新支线</h3>
+<h3
+id="第九段时间文化与技术加速人工智能成为新支线">第九段时间：文化与技术加速，人工智能成为新支线</h3>
 <p>如果把整条时间线压到一天里，人类文明几乎只占最后一瞬。</p>
 <p>但偏偏就是这极短的一瞬，发生了一个前所未有的变化：
 生命不仅能在基因里累积信息，还学会了把信息外包给文化、制度和技术。</p>
@@ -1452,7 +1328,8 @@ AGI，并尝试制造新的智能载体。</li>
 <p>到这里，生成链第一次真正带上了强烈的“反身性”——
 系统开始不只是理解世界，还开始尝试重新设计理解世界的系统本身。</p>
 <hr />
-<h3 id="一条反复出现的暗线同一套宇宙不同版本的择优">一条反复出现的暗线：同一套宇宙，不同版本的“择优”</h3>
+<h3
+id="一条反复出现的暗线同一套宇宙不同版本的择优">一条反复出现的暗线：同一套宇宙，不同版本的“择优”</h3>
 <p>虽然本章刻意不深讲机制，但有一条暗线还是值得现在就先看见。
 第二章里我们提过，许多物理理论都可以写成某种极值原则的形式：
 系统并不是在所有可能路径里乱跑，而是在约束之下落到某些更“走得通”的解上。</p>
@@ -1494,7 +1371,8 @@ AGI，并尝试制造新的智能载体。</li>
 很惊人，但它也不是“从天外掉下来”的异物。</p>
 <p>它们都在这条时间线上有自己的前史，也都有各自的条件和边界。</p>
 <hr />
-<h3 id="小结先把时间轴立起来再去放大各个节点">小结：先把时间轴立起来，再去放大各个节点</h3>
+<h3
+id="小结先把时间轴立起来再去放大各个节点">小结：先把时间轴立起来，再去放大各个节点</h3>
 <p>回顾这一章，我们做的事情其实很简单，但非常关键：</p>
 <ol type="1">
 <li>把宇宙从“若干零散知识点”重新整理成了一条<strong>生成时间线</strong>；</li>
@@ -1562,7 +1440,8 @@ AGI，并尝试制造新的智能载体。</li>
 至于生命登场之前，宇宙怎样先搭出更大尺度的耗散舞台，
 我们会在下一章专门回头处理。</p>
 <hr />
-<h3 id="耗散结构进化发生之前舞台必须先存在">耗散结构：进化发生之前，舞台必须先存在</h3>
+<h3
+id="耗散结构进化发生之前舞台必须先存在">耗散结构：进化发生之前，舞台必须先存在</h3>
 <p>第三章已经告诉我们，宇宙不是一锅迅速摊平的温水。
 只要系统不是完全封闭，只要外界还在提供温差、浓度差、化学势差或辐射差，
 局部就有机会在熵增背景下“长出”秩序。</p>
@@ -1645,7 +1524,8 @@ AGI，并尝试制造新的智能载体。</li>
 <p>它没有蓝图，没有终点说明书，
 却会在长时间尺度上，把种群慢慢推向“在此时此地更合算”的那些方向。</p>
 <hr />
-<h3 id="适应度地形但这片山并不是静止的">适应度地形：但这片山并不是静止的</h3>
+<h3
+id="适应度地形但这片山并不是静止的">适应度地形：但这片山并不是静止的</h3>
 <p>为了看清这部机器怎样运作，我们常借用“适应度地形”的比喻。</p>
 <p>想象所有可能的遗传与形态组合，铺成一片高维山地：</p>
 <ul>
@@ -1676,7 +1556,8 @@ AGI，并尝试制造新的智能载体。</li>
 <p>这会让我们对“适应”这个词更谨慎。 适应不是完美，也不是万能，
 而是某条谱系在某种约束下留下来的阶段性答案。</p>
 <hr />
-<h3 id="进化不是越来越高级它只对留存负责">进化不是“越来越高级”：它只对留存负责</h3>
+<h3
+id="进化不是越来越高级它只对留存负责">进化不是“越来越高级”：它只对留存负责</h3>
 <p>很多关于进化的误解，都来自一种偷偷混进来的价值判断：
 好像进化总在朝“更复杂、更聪明、更高级”的方向前进。</p>
 <p>这并不准确。</p>
@@ -1705,7 +1586,8 @@ AGI，并尝试制造新的智能载体。</li>
 我们当然可以承认语言、抽象推理和技术让人类成为极特殊的分支，
 但不能把这种特殊，误读成宇宙预设的人生终点。
 进化没有终局叙事，它只是在局部条件下，反复结算成本与收益。</p>
-<h3 id="进化在做什么把环境信息刻进活体结构">进化在做什么：把环境信息刻进活体结构</h3>
+<h3
+id="进化在做什么把环境信息刻进活体结构">进化在做什么：把环境信息刻进活体结构</h3>
 <p>热力学告诉我们，整体混乱会增加。
 那进化为何还能在局部雕刻出越来越精细的结构？</p>
 <p>一个有用的看法是：</p>
@@ -1735,7 +1617,8 @@ AGI，并尝试制造新的智能载体。</li>
 <p>所以，进化并不是在反抗物理定律。
 它是在物理定律允许的框架里，发明了一种特别高效的局部信息积累方式。</p>
 <hr />
-<h3 id="重大演化转变复杂性为什么能层层叠上去">重大演化转变：复杂性为什么能层层叠上去？</h3>
+<h3
+id="重大演化转变复杂性为什么能层层叠上去">重大演化转变：复杂性为什么能层层叠上去？</h3>
 <p>如果进化只是小修小补，我们今天不会看到细胞、器官、神经系统、社会合作这些层级化奇观。
 真正拉开复杂度差距的，是那些“组织单位本身发生改变”的时刻。</p>
 <p>可以把它们理解成几次关键的升级：</p>
@@ -1767,7 +1650,8 @@ AGI，并尝试制造新的智能载体。</li>
 <p><strong>多建成了一种新的组织方式。</strong></p>
 </blockquote>
 <hr />
-<h3 id="达尔文旋律能走多远类比可以但边界必须在">达尔文旋律能走多远：类比可以，但边界必须在</h3>
+<h3
+id="达尔文旋律能走多远类比可以但边界必须在">达尔文旋律能走多远：类比可以，但边界必须在</h3>
 <p>讲到这里，很自然会想到： 既然复制、变异、选择这么普遍，
 那技术、观念、制度、算法，是不是都能用进化来理解？</p>
 <p>答案是：<strong>可以，但必须谨慎。</strong></p>
@@ -1806,7 +1690,8 @@ AGI，并尝试制造新的智能载体。</li>
 看见相似的搜索结构，是为了获得清醒，
 不是为了把一切成功都包装成“自然合理”。</p>
 <hr />
-<h3 id="回到主线进化是宇宙优化偏好的生命版本">回到主线：进化是宇宙优化偏好的生命版本</h3>
+<h3
+id="回到主线进化是宇宙优化偏好的生命版本">回到主线：进化是宇宙优化偏好的生命版本</h3>
 <p>现在，把前几章连起来看，主线会更清楚。</p>
 <ul>
 <li>在物理层面，自然常常表现为极值原则下的路径选择；</li>
@@ -1886,14 +1771,16 @@ AGI，并尝试制造新的智能载体。</li>
 这样系统才可能从“均匀响应”跳进一种新的、有结构的状态。</p></li>
 </ol>
 <p>在非平衡热力学里，常用一个简单的熵分解来刻画这类系统：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>S</mi><mo>=</mo><msub><mi>d</mi><mi>e</mi></msub><mi>S</mi><mo>+</mo><msub><mi>d</mi><mi>i</mi></msub><mi>S</mi></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">\[
 dS = d_e S + d_i S
-</annotation></semantics></math></p>
+\]</span></p>
 <ul>
-<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">dS</annotation></semantics></math>：系统自身熵的变化；</li>
-<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>e</mi></msub><mi>S</mi></mrow><annotation encoding="application/x-tex">d_e S</annotation></semantics></math>：与环境交换带来的熵流；</li>
-<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>i</mi></msub><mi>S</mi></mrow><annotation encoding="application/x-tex">d_i S</annotation></semantics></math>：系统内部不可逆过程产生的熵，永远满足
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>i</mi></msub><mi>S</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d_i S \ge 0</annotation></semantics></math>。</li>
+<li><span class="math inline">\(dS\)</span>：系统自身熵的变化；</li>
+<li><span class="math inline">\(d_e
+S\)</span>：与环境交换带来的熵流；</li>
+<li><span class="math inline">\(d_i
+S\)</span>：系统内部不可逆过程产生的熵，永远满足 <span
+class="math inline">\(d_i S \ge 0\)</span>。</li>
 </ul>
 <p>这意味着一个开放系统完全可能出现这样的局面：</p>
 <blockquote>
@@ -1963,7 +1850,8 @@ dS = d_e S + d_i S
 它都可以近似看成和周围辐射场、物质环境持续交换能量的非平衡系统。
 在这个意义上，星系形成完全可以被纳入“自组织”的框架中理解。</p>
 <hr />
-<h3 id="恒星把势能差和核能差接成一条河">恒星：把势能差和核能差接成一条河</h3>
+<h3
+id="恒星把势能差和核能差接成一条河">恒星：把势能差和核能差接成一条河</h3>
 <p>再往下走，是恒星。</p>
 <p>一团气体云在引力下坍缩时，首先释放的是引力势能。
 坍缩让气体越来越热；当核心温度和密度高到某个阈值，核聚变被点燃：</p>
@@ -2016,7 +1904,8 @@ dS = d_e S + d_i S
 <p>行星轨道之所以整齐，不是因为宇宙偏爱整齐本身，
 而是因为在给定约束下，那些更混乱、更危险的构型更不容易长期活下来。</p>
 <hr />
-<h3 id="行星环境嵌套起来的多级耗散舞台">行星环境：嵌套起来的多级耗散舞台</h3>
+<h3
+id="行星环境嵌套起来的多级耗散舞台">行星环境：嵌套起来的多级耗散舞台</h3>
 <p>有了恒星和行星，镜头再推进到类似地球的环境。</p>
 <p>此时我们面对的，已经不是单一耗散结构，
 而是一层套一层的<strong>嵌套系统</strong>：</p>
@@ -2041,7 +1930,8 @@ dS = d_e S + d_i S
 生命不是在真空里突然蹦出来的，
 而是在这样的平台上，沿着已有的能流、物质流和稳定边界继续向前推进。</p>
 <hr />
-<h3 id="准选择自然选择之前的物理筛选">准选择：自然选择之前的物理筛选</h3>
+<h3
+id="准选择自然选择之前的物理筛选">准选择：自然选择之前的物理筛选</h3>
 <p>现在可以回到本章一开始埋下的那个词：<strong>准选择</strong>。</p>
 <p>这里再强调一次，它是类比，不是拟人。 它要表达的是：</p>
 <blockquote>
@@ -2076,7 +1966,8 @@ dS = d_e S + d_i S
 </ul>
 <p>前者为后者搭台，后者在前者之上升级。</p>
 <hr />
-<h3 id="小结在生命之前宇宙已经学会搭舞台">小结：在生命之前，宇宙已经学会搭舞台</h3>
+<h3
+id="小结在生命之前宇宙已经学会搭舞台">小结：在生命之前，宇宙已经学会搭舞台</h3>
 <p>把这一章放回整棵“世界观生成树”上，它的位置其实非常清楚。</p>
 <p>如果说前几章已经告诉我们：</p>
 <ul>
@@ -2126,7 +2017,8 @@ dS = d_e S + d_i S
 </ol>
 <p>这样处理，是为了把第四章讲的“进化机制”与本章讲的“生命起源与重大演化转变”分开：前者回答<strong>规则是什么</strong>，后者回答<strong>这种规则第一次在哪类结构上被点亮</strong>。</p>
 <hr />
-<h3 id="生命的热力学身份一种会维持自己的耗散结构">生命的热力学身份：一种会维持自己的耗散结构</h3>
+<h3
+id="生命的热力学身份一种会维持自己的耗散结构">生命的热力学身份：一种会维持自己的耗散结构</h3>
 <p>先给生命下一个尽量克制、但足够有用的工作定义：</p>
 <blockquote>
 <p><strong>生命是一类开放的、远离平衡的耗散结构：
@@ -2135,22 +2027,24 @@ dS = d_e S + d_i S
 </blockquote>
 <p>这一定义先抓住了生命和火焰、台风、冰箱这些普通耗散结构的共同点：它们都不能脱离能量流单独存在。只要交换停止，结构就会衰败，回到更接近平衡的状态。</p>
 <p>因此，任何生命体都要服从这条冷静的约束：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mi>S</mi><mtext mathvariant="normal">系统</mtext></msub><mo>+</mo><mi mathvariant="normal">Δ</mi><msub><mi>S</mi><mtext mathvariant="normal">环境</mtext></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+<p><span class="math display">\[
 \Delta S_{\text{系统}} + \Delta S_{\text{环境}} \ge 0
-</annotation></semantics></math></p>
+\]</span></p>
 <p>如果系统内部要保持相对低熵、有组织，它就必须把更大的熵增“转嫁”给环境。薛定谔说生命“以负熵为食”，用现代一点的语言，更准确的表达是：</p>
 <blockquote>
 <p><strong>生命靠持续消耗自由能，来推迟自身滑向平衡的命运。</strong></p>
 </blockquote>
 <p>但生命比普通耗散结构多了两步，这两步几乎决定了它为什么会成为宇宙中的特殊角色。</p>
-<h4 id="第一步它不只是被维持而是在主动维持自己">第一步：它不只是被维持，而是在主动维持自己</h4>
+<h4
+id="第一步它不只是被维持而是在主动维持自己">第一步：它不只是被维持，而是在主动维持自己</h4>
 <p>火焰会燃烧，却不会修补边界；冰箱能降温，却不会在自己零件老化时主动组织一套修复流程。生命则不同。细胞会维持膜电位，调节渗透压，修复
 DNA，替换受损蛋白；多细胞生物更进一步，会组织免疫、修复、发育和行为，尽量让“自己继续像自己”。</p>
 <p>所以，生命不是“碰巧稳定一会儿的结构”，而是：</p>
 <blockquote>
 <p><strong>会把自由能投入到自体维持中的结构。</strong></p>
 </blockquote>
-<h4 id="第二步它把维持自己的办法写进了可继承的信息里">第二步：它把维持自己的办法写进了可继承的信息里</h4>
+<h4
+id="第二步它把维持自己的办法写进了可继承的信息里">第二步：它把维持自己的办法写进了可继承的信息里</h4>
 <p>更关键的是，生命不只活在当下，它还会把“如何构造并延续这个自己”的规则编码下来。今天这个载体主要是
 DNA 和
 RNA；在更原始的阶段，也许是更粗糙的模板分子、催化网络和边界结构。</p>
@@ -2166,7 +2060,8 @@ RNA；在更原始的阶段，也许是更粗糙的模板分子、催化网络�
 </blockquote>
 <p>从这一刻起，宇宙里的筛选就不再只是“哪种结构更稳”，而升级成“哪种结构更会继续存在，并留下更多自己的版本”。</p>
 <hr />
-<h3 id="从前生命化学到生命门槛哪些台阶必须跨过去">从前生命化学到生命门槛：哪些台阶必须跨过去？</h3>
+<h3
+id="从前生命化学到生命门槛哪些台阶必须跨过去">从前生命化学到生命门槛：哪些台阶必须跨过去？</h3>
 <p>把时间拉回到大约 40
 亿年前的地球。那时的地球已经不是一块安静的石头，而是一台巨大的化学反应器：</p>
 <ul>
@@ -2192,10 +2087,12 @@ RNA
 能在模板复制中留下自己，又能帮助相关反应更顺畅地发生，那么遗传与功能就第一次被压缩到了同一种分子上。</p>
 <p>它解释得好的，是“信息如何较早进入舞台”；难点则包括：核苷酸如何稳定生成、长链
 RNA 如何在原始环境中维持、复制误差如何被控制。</p>
-<h4 id="代谢先行先有持续运转的化学网络">代谢先行：先有持续运转的化学网络</h4>
+<h4
+id="代谢先行先有持续运转的化学网络">代谢先行：先有持续运转的化学网络</h4>
 <p>这一思路更强调：生命未必始于“某个会复制的单分子”，而可能始于矿物表面、热液孔隙等环境中逐步闭合的代谢回路。只要网络能借助环境梯度持续运转，并逐渐形成对自身有利的反馈，它就已经向“自体维持”迈了一大步。</p>
 <p>它解释得好的，是“为什么生命从一开始就像一整套耦合系统”；难点是：如果没有较稳定的信息载体，这种网络如何跨代保真、如何把成功经验积累下来？</p>
-<h4 id="膜泡原细胞路线先有边界再有内部复杂性">膜泡—原细胞路线：先有边界，再有内部复杂性</h4>
+<h4
+id="膜泡原细胞路线先有边界再有内部复杂性">膜泡—原细胞路线：先有边界，再有内部复杂性</h4>
 <p>脂肪酸类分子会自发形成膜泡，这给生命起源提供了另一块关键拼图：<strong>边界</strong>。一旦某些反应被包进小小的囊泡里，浓度得以维持，内外环境得以分离，选择压力也会更具体。能够长大、分裂、包裹并保留内部化学成分的膜泡，很像原细胞的雏形。</p>
 <p>它解释得好的，是“生命为什么几乎必然需要一个里面和外面”；难点是：只有边界还不够，边界内部必须逐步接入代谢和信息，否则它仍只是一个会漂浮的化学小袋子。</p>
 <p>把这几条路线放在一起看，本书更倾向于这样的综合判断：</p>
@@ -2206,7 +2103,8 @@ RNA 如何在原始环境中维持、复制误差如何被控制。</p>
 <p>真正跨过门槛的，不是谁先孤零零出现，而是这几个要素第一次被捆成了一个能持续迭代的闭环。</p>
 <p>还可以再加一句方法论提醒：生命起源研究里，<strong>“没有定论”不等于“什么都不知道”</strong>。今天较稳的认识更像这样：早期地球确实提供了持续供能、反应网络、区室化和催化表面；真正尚未锁定的，是这些拼图先后怎样耦合、哪一步最先跨过可遗传的门槛。换句话说，争议主要集中在“路线图”，而不是集中在“生命必须同时解决边界、代谢、信息和复制”这一总判断上。</p>
 <hr />
-<h3 id="从准选择到自然选择筛选规则何时真正升级">从准选择到自然选择：筛选规则何时真正升级？</h3>
+<h3
+id="从准选择到自然选择筛选规则何时真正升级">从准选择到自然选择：筛选规则何时真正升级？</h3>
 <p>第五章讲过“准选择”：在没有基因、没有达尔文繁殖之前，物理世界中那些更稳定、更容易维持、更能顺着能量梯度运行的结构，会更常见、更持久。</p>
 <p>在前生命化学阶段，同样的筛选已经开始发生：</p>
 <ul>
@@ -2228,7 +2126,8 @@ RNA 如何在原始环境中维持、复制误差如何被控制。</p>
 <p>这一步带来的重要后果，是“功能”第一次以稳定形式出现。膜为什么要把里外分开？酶为什么要催化这条路线？色素为什么要吸收特定波长的光？在严格意义上，它们并没有预设目的；但在进化之后，我们可以说：它们之所以留下来，是因为这些作用提高了延续自身的概率。</p>
 <p>这就是生命世界独特的“目的论外观”。它不是超自然设计，而是筛选规则升级后的自然结果。</p>
 <hr />
-<h3 id="生命的运行方式信息怎样开始指挥能量">生命的运行方式：信息怎样开始指挥能量？</h3>
+<h3
+id="生命的运行方式信息怎样开始指挥能量">生命的运行方式：信息怎样开始指挥能量？</h3>
 <p>如果说生命的起源，是把边界、代谢、信息和复制绑到了一起；那么生命真正成熟，靠的是让这套绑定越来越稳、越来越精细。</p>
 <p>活着这件事，至少需要同时完成三项任务：</p>
 <ol type="1">
@@ -2246,25 +2145,30 @@ RNA 如何在原始环境中维持、复制误差如何被控制。</p>
 </blockquote>
 <p>当然，这种“信息统治能量”的说法不能太绝对。更精确的表述是：信息本身也是物理结构，是在能量流和选择压力下被保留下来的；但一旦它被保留，它又反过来塑造后续的能量分配。生命的精妙之处，恰恰在这两个方向构成了稳定闭环。</p>
 <hr />
-<h3 id="重大演化转变复杂性怎样一层层抬高">重大演化转变：复杂性怎样一层层抬高？</h3>
+<h3
+id="重大演化转变复杂性怎样一层层抬高">重大演化转变：复杂性怎样一层层抬高？</h3>
 <p>生命一旦越过起源门槛，后面的历史就不再只是“有没有生命”，而是“生命能把自己抬到多高的复杂度”。这条路上最重要的，不是无数细碎变化，而是几次层级明显上跳的重大转变。</p>
-<h4 id="原核生命先把最基本的代谢与复制做稳">原核生命：先把最基本的代谢与复制做稳</h4>
+<h4
+id="原核生命先把最基本的代谢与复制做稳">原核生命：先把最基本的代谢与复制做稳</h4>
 <p>最早期生命大概率是原核样的单细胞系统。它们体积小，却已经拥有高度复杂的代谢网络、膜结构和遗传—翻译装置。这个阶段的重要性在于：生命先把“基本生存协议”打磨得非常扎实——摄能、复制、修复、响应环境。</p>
 <p>与此同时，光合作用和有氧呼吸等创新不断改写整个行星环境。生物不再只是被环境塑造，也开始反过来重塑环境。</p>
-<h4 id="真核革命把多个小系统组装成更大的模块">真核革命：把多个小系统组装成更大的模块</h4>
+<h4
+id="真核革命把多个小系统组装成更大的模块">真核革命：把多个小系统组装成更大的模块</h4>
 <p>真核细胞的出现，是复杂性提升中的一次决定性跃迁。通过内共生，原本独立的生命体被整合成一个更大单元：线粒体把高效供能带进细胞内部，叶绿体把太阳能直接接进某些谱系的代谢主线。</p>
 <p>这一转变的意义不只是“功能变多了”，而是：</p>
 <blockquote>
 <p><strong>生命第一次稳定地学会了把多个复制与耗散单元，打包成一个更高层级的协作体。</strong></p>
 </blockquote>
 <p>从此，细胞可以更大、内部可以更分区、调控可以更复杂，后面的多细胞化才真正有了物质基础。</p>
-<h4 id="多细胞化让选择的焦点从细胞转向整体个体">多细胞化：让选择的焦点从细胞转向整体个体</h4>
+<h4
+id="多细胞化让选择的焦点从细胞转向整体个体">多细胞化：让选择的焦点从细胞转向整体个体</h4>
 <p>多细胞不是“很多细胞挤在一起”，而是选择单位的一次重新组织。原本彼此竞争的细胞，被纳入同一个发育程序与分工体系中：有的负责运动，有的负责营养，有的负责感知和信息传递。为了让整体个体更成功，内部成员必须压低自己的无序扩张冲动；癌症之所以危险，恰好是因为某些细胞重新把“复制自己”放回了局部目标。</p>
 <p>因此，多细胞化的本质是：</p>
 <blockquote>
 <p><strong>通过抑制内部冲突，换取更高层级的适应优势。</strong></p>
 </blockquote>
-<h4 id="生态网络生命不再只是个体而是跨物种耦合系统">生态网络：生命不再只是个体，而是跨物种耦合系统</h4>
+<h4
+id="生态网络生命不再只是个体而是跨物种耦合系统">生态网络：生命不再只是个体，而是跨物种耦合系统</h4>
 <p>当物种数量、分工和相互依赖足够多时，生命开始以生态系统的形式运行。生产者、消费者、分解者，合作、竞争、共生、捕食，构成了一张跨物种的能量—物质—信息网络。</p>
 <p>这提醒我们：生命的复杂性不是简单向“更大个体”单线推进，也会向“更复杂的关系网络”推进。一个稳定生态系统，本身就是一种高层级耗散结构，它把区域中的能量梯度利用得更彻底，也让更多生命形式得以共存。</p>
 <hr />
@@ -2293,7 +2197,8 @@ RNA 如何在原始环境中维持、复制误差如何被控制。</p>
 <p><strong>第一类会把过去的成功留给未来、并据此持续改写后续生成路径的结构。</strong></p>
 </blockquote>
 <p>从“被法则生成”，到“在法则允许的范围内参与生成”，差别就从这里开始。</p>
-<h3 id="小结生命是宇宙生成链上的哪一步">小结：生命是宇宙生成链上的哪一步？</h3>
+<h3
+id="小结生命是宇宙生成链上的哪一步">小结：生命是宇宙生成链上的哪一步？</h3>
 <p>现在回看整棵“世界观生成树”，生命的位置可以说得更清楚了。</p>
 <p>在它之前，宇宙已经能生成大量复杂结构：原子、恒星、行星、大气、洋流、地质循环……这些结构同样惊人，但它们主要仍是“被法则推着走”的结果。到了生命这里，事情出现了关键变化：</p>
 <ul>
@@ -2359,7 +2264,8 @@ RNA 如何在原始环境中维持、复制误差如何被控制。</p>
 后者仍未解决，但至少可以更精确地问——
 <strong>什么样的物理–信息结构，才有资格被怀疑带有主观体验的内在侧面。</strong></p>
 <hr />
-<h3 id="智能作为生存工具的世界建模能力">智能：作为生存工具的世界建模能力</h3>
+<h3
+id="智能作为生存工具的世界建模能力">智能：作为生存工具的世界建模能力</h3>
 <p>先从“相对容易”的那一半开始：智能。</p>
 <p>延续前几章的风格，我们可以给智能一个尽量朴素、可操作的定义：</p>
 <blockquote>
@@ -2391,7 +2297,8 @@ RNA 如何在原始环境中维持、复制误差如何被控制。</p>
 <p>这样一来，智能就不再像“生命之外多了一层神秘光环”，
 而是生命作为耗散结构升级之后，长出的一种<strong>高效生存工具</strong>。</p>
 <hr />
-<h3 id="预测大脑与自由能最小化智能在脑里的实现方式">预测大脑与自由能最小化：智能在脑里的实现方式</h3>
+<h3
+id="预测大脑与自由能最小化智能在脑里的实现方式">预测大脑与自由能最小化：智能在脑里的实现方式</h3>
 <p>把定义再“落地”一点：现代认知科学里，一个影响很大的研究程序是<strong>预测加工
 / 预测编码</strong>。</p>
 <p>粗略地说：</p>
@@ -2431,7 +2338,8 @@ RNA 如何在原始环境中维持、复制误差如何被控制。</p>
 <p>接下来，把目光从“智能”转向“主观体验”。
 说明：科学界并没有公认完成版理论。
 更接近事实的说法是：现在有几条竞争中的研究路线，这里挑两条来看。</p>
-<h4 id="全局工作空间理论被广播的信息才是被意识到的">全局工作空间理论：被“广播”的信息才是“被意识到”的</h4>
+<h4
+id="全局工作空间理论被广播的信息才是被意识到的">全局工作空间理论：被“广播”的信息才是“被意识到”的</h4>
 <p><strong>全局神经工作空间理论（GWT）</strong>大致说的是：</p>
 <ul>
 <li>大脑里有很多专门的小模块： 视觉、听觉、语言、运动、情绪、记忆……</li>
@@ -2480,7 +2388,8 @@ RNA 如何在原始环境中维持、复制误差如何被控制。</p>
 <p>在我们这本书的语境里，这些理论更像是：
 针对“什么样的耗散信息结构会带来自觉体验”这一问题的几份<strong>候选草稿</strong>。</p>
 <hr />
-<h3 id="意识的进化功能感觉到底有什么用">意识的进化功能：感觉到底有什么用？</h3>
+<h3
+id="意识的进化功能感觉到底有什么用">意识的进化功能：感觉到底有什么用？</h3>
 <p>如果意识真是某种“信息组织模式”，
 那它为什么会在进化中被保留下来，甚至在灵长类、人类身上被推到如此复杂？</p>
 <p>从第四、六章的进化视角看，可以提炼出几类可能的功能。</p>
@@ -2617,7 +2526,8 @@ deliberation（权衡）虽然慢，却特别擅长处理<strong>冲突、例外
 它的内在视角，就是“我正在体验世界”。</p>
 </blockquote>
 <hr />
-<h3 id="祛魅与复位意识在生成树上的具体位置">祛魅与复位：意识在生成树上的具体位置</h3>
+<h3
+id="祛魅与复位意识在生成树上的具体位置">祛魅与复位：意识在生成树上的具体位置</h3>
 <p>把上面这些线索捏在一起，我们可以给本章一个更稳妥的总结：</p>
 <ol type="1">
 <li><p><strong>在物理层面</strong></p>
@@ -2752,7 +2662,8 @@ AI</strong>；</li>
 也就是：在一个只写着物理定律的宇宙里，我们怎样把“该做什么”安放进新出现的智能系统。</li>
 </ol>
 <hr />
-<h3 id="一大模型到底在干什么从下一个-token到内部世界模型">一、大模型到底在干什么？——从“下一个
+<h3
+id="一大模型到底在干什么从下一个-token到内部世界模型">一、大模型到底在干什么？——从“下一个
 token”到“内部世界模型”</h3>
 <p>现在几乎每个人都在使用某种大模型：
 写文案、写代码、总结材料、生成图像、做翻译……
@@ -2773,8 +2684,9 @@ token”到“内部世界模型”</h3>
 <ol type="1">
 <li>把文本、图像说明甚至其他符号序列切成 token；</li>
 <li>把这些 token 映射到高维向量空间，变成一串可计算的表征；</li>
-<li>用一个巨大的神经网络去近似这个条件概率：
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mtext mathvariant="normal">下一个 token</mtext><mo>∣</mo><mtext mathvariant="normal">前面的所有 token</mtext><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(\text{下一个 token}\mid \text{前面的所有 token})</annotation></semantics></math>；</li>
+<li>用一个巨大的神经网络去近似这个条件概率： <span
+class="math inline">\(P(\text{下一个 token}\mid \text{前面的所有
+token})\)</span>；</li>
 <li>通过反向传播与梯度下降，反复调整参数，
 让预测分布越来越贴近训练数据中的真实统计结构。</li>
 </ol>
@@ -2845,7 +2757,8 @@ token”到“内部世界模型”</h3>
 而开始逼近一种更像<strong>智能部件库</strong>的状态：
 它自己未必已经是完整主体， 却已经可以成为主体的核心认知内核。</p>
 <hr />
-<h3 id="二从自然选择到梯度下降另一种选择机制">二、从自然选择到梯度下降：另一种“选择机制”</h3>
+<h3
+id="二从自然选择到梯度下降另一种选择机制">二、从自然选择到梯度下降：另一种“选择机制”</h3>
 <p>在第四章，我们把达尔文进化重写成一段抽象的生成律动：</p>
 <blockquote>
 <p><strong>复制 → 变异 → 选择 → 再复制……</strong></p>
@@ -3056,7 +2969,8 @@ AGI：一个自主智能体需要的“完整循环”</h3>
 而是当这些能力首尾闭环之后，
 一个系统开始真正具备了<strong>在世界中长期自主运行</strong>的资格。</p>
 <hr />
-<h3 id="四机器会感觉吗一个谨慎开放的态度">四、机器会“感觉”吗？——一个谨慎开放的态度</h3>
+<h3
+id="四机器会感觉吗一个谨慎开放的态度">四、机器会“感觉”吗？——一个谨慎开放的态度</h3>
 <p>在第七章，我们讨论意识时提到过几条典型路线：</p>
 <ul>
 <li>全局工作空间理论（GWT）强调全局广播与信息可用性；</li>
@@ -3110,7 +3024,8 @@ AGI：一个自主智能体需要的“完整循环”</h3>
 <p>这不是摇摆不定，
 而是在一个尚未解决的问题上，尽量不让判断跑到证据前面。</p>
 <hr />
-<h3 id="五对齐在冷酷物理定律中安放人类价值">五、对齐：在冷酷物理定律中安放人类价值</h3>
+<h3
+id="五对齐在冷酷物理定律中安放人类价值">五、对齐：在冷酷物理定律中安放人类价值</h3>
 <p>就算暂时把机器意识问题放在一边， 只要 AI
 的能力继续增长，一个更现实的问题就会浮上来：</p>
 <blockquote>
@@ -3342,7 +3257,8 @@ patch，而是文明在为新智能书写“价值边界条件”。</li>
 只有当一个系统能够建模世界、建模自己，并在时间中修订自己的打分规则时，
 “意义”才会完整地浮现出来。</p>
 <hr />
-<h3 id="宇宙智能假说一种工作视角而不是终极定理">宇宙智能假说：一种工作视角，而不是终极定理</h3>
+<h3
+id="宇宙智能假说一种工作视角而不是终极定理">宇宙智能假说：一种工作视角，而不是终极定理</h3>
 <p>在这样的铺垫下，我们可以更谨慎地表述本书一直在酝酿的一种视角：</p>
 <blockquote>
 <p><strong>宇宙智能假说：</strong>
@@ -3376,11 +3292,13 @@ patch，而是文明在为新智能书写“价值边界条件”。</li>
 却还没有形成与之匹配的稳定价值框架和全球协作能力。</li>
 </ul>
 <hr />
-<h3 id="两类未来情景不是时间表而是分岔图">两类未来情景：不是时间表，而是分岔图</h3>
+<h3
+id="两类未来情景不是时间表而是分岔图">两类未来情景：不是时间表，而是分岔图</h3>
 <p>为了把“宇宙智能假说”落回到人类和 AGI
 的具体处境上，我们可以不做硬年份预测，
 而改用一种更稳妥的方式：把未来看成几条可能分岔，而不是一张写死的时间表。</p>
-<h4 id="情景一协作性增强人类借助-ai-大幅扩展能力">情景一：协作性增强——人类借助
+<h4
+id="情景一协作性增强人类借助-ai-大幅扩展能力">情景一：协作性增强——人类借助
 AI 大幅扩展能力</h4>
 <p>第一条分岔，是人和 AI
 在较长时期内保持“人制定方向、机器放大能力”的关系。</p>
@@ -3404,7 +3322,8 @@ AI 大幅扩展能力</h4>
 它同时也是一个制度试验：
 我们能否把增强后的能力，转化为更大范围的尊严、安全和可参与性，
 而不是把它们重新铸成新的等级壁垒。</p>
-<h4 id="情景二超人智能出现关系从工具使用转向生态共处">情景二：超人智能出现——关系从工具使用转向生态共处</h4>
+<h4
+id="情景二超人智能出现关系从工具使用转向生态共处">情景二：超人智能出现——关系从工具使用转向生态共处</h4>
 <p>另一条分岔，是人工系统在整体建模、设计、规划与自我改进上显著超出人类，
 从“工具”逐步变成一种新的智能主体或新的智能基础设施。</p>
 <p>这时最常见的问题是：</p>
@@ -3435,7 +3354,8 @@ AI 大幅扩展能力</h4>
 <p>所以，第二条情景更准确的理解不是“人类一定打不过机器”，
 而是：<strong>未来将取决于不同智能分支之间能否建立可持续的边界、协议与价值接口。</strong></p>
 <hr />
-<h3 id="人类的角色最早一批会反过来写规则的枝条">人类的角色：最早一批会反过来写规则的枝条</h3>
+<h3
+id="人类的角色最早一批会反过来写规则的枝条">人类的角色：最早一批会反过来写规则的枝条</h3>
 <p>如果把前面的生成逻辑抽象成一棵巨大的“宇宙生成树”：</p>
 <ul>
 <li>根部是公理、物理定律和初始条件；</li>
@@ -3476,7 +3396,8 @@ AI、把哪些原则写进法律、把哪些评价标准写进平台、学校和
 <h3 id="意义实践的三个尺度">意义实践的三个尺度</h3>
 <p>当“意义”被放回宇宙—进化—技术的长链里，它就不再是一道等待标准答案的哲学题，
 而更像是一套需要被持续维护的多层结构。</p>
-<h4 id="对自己把一生组织成一部能自我辩护的作品">对自己：把一生组织成一部能自我辩护的作品</h4>
+<h4
+id="对自己把一生组织成一部能自我辩护的作品">对自己：把一生组织成一部能自我辩护的作品</h4>
 <p>在个人尺度上，意义不是“每天都热血沸腾”，
 而是让自己的生命在回看时，形成某种能够自我解释、能经受反思的结构。</p>
 <p>这意味着：</p>
@@ -3488,7 +3409,8 @@ AI、把哪些原则写进法律、把哪些评价标准写进平台、学校和
 </ul>
 <p>从本书的语境看，这并不是玄学修身， 而是一次相当具体的工程：
 用更稳的世界模型，去重写自己对成功、关系、工作、痛苦和长期主义的排序方式。</p>
-<h4 id="对他人与社会参与编织更少内耗更能合作的网络">对他人与社会：参与编织更少内耗、更能合作的网络</h4>
+<h4
+id="对他人与社会参与编织更少内耗更能合作的网络">对他人与社会：参与编织更少内耗、更能合作的网络</h4>
 <p>在社会尺度上，意义体现在：
 你不是孤立地“活明白”，而是在参与构造什么样的协作环境。</p>
 <p>如果制度鼓励短视，平台奖励极化，组织惩罚诚实，
@@ -3500,7 +3422,8 @@ AI、把哪些原则写进法律、把哪些评价标准写进平台、学校和
 <li>在更大范围内关心教育、科技治理、资源分配、AI 监管这些长期变量；</li>
 <li>努力成为网络中的“稳健节点”，而不是只放大噪声的中继器。</li>
 </ul>
-<h4 id="对未来与宇宙把某些价值尽量写进更长的时间轴">对未来与宇宙：把某些价值尽量写进更长的时间轴</h4>
+<h4
+id="对未来与宇宙把某些价值尽量写进更长的时间轴">对未来与宇宙：把某些价值尽量写进更长的时间轴</h4>
 <p>在更大的尺度上，我们未必能给宇宙一个“终极目的”，
 但我们至少可以做一件更现实、也更庄重的事：</p>
 <blockquote>
@@ -3585,7 +3508,8 @@ AI、把哪些原则写进法律、把哪些评价标准写进平台、学校和
 <li>你怎样把前九章真正焊进自己的判断系统里。</li>
 </ul>
 <hr />
-<h3 id="从囤积知识到知识换基工作假说">从囤积知识到“知识换基”工作假说</h3>
+<h3
+id="从囤积知识到知识换基工作假说">从囤积知识到“知识换基”工作假说</h3>
 <p>先给一个尽量不花哨、但足够重要的判断：</p>
 <blockquote>
 <p><strong>学习的核心，不是信息堆积，而是表征重构。</strong></p>
@@ -3623,7 +3547,8 @@ AI、把哪些原则写进法律、把哪些评价标准写进平台、学校和
 压不掉的，是<strong>重建表征的成本</strong>。</p>
 <p>这一步既慢，又贵，而且不能外包。</p>
 <hr />
-<h3 id="世界生成树与知识生成树一棵外在一棵内在">世界生成树与知识生成树：一棵外在，一棵内在</h3>
+<h3
+id="世界生成树与知识生成树一棵外在一棵内在">世界生成树与知识生成树：一棵外在，一棵内在</h3>
 <p>前九章处理的是<strong>世界怎么长出来</strong>。
 那是一棵客观意义上的“世界生成树”：</p>
 <ul>
@@ -3665,7 +3590,8 @@ AI、把哪些原则写进法律、把哪些评价标准写进平台、学校和
 <p>所以，“知识换基”不是多长几片叶子，
 而是让整棵树的主干方向发生修正。</p>
 <hr />
-<h3 id="学习的物理成本昂贵但也因此可靠">学习的物理成本：昂贵，但也因此可靠</h3>
+<h3
+id="学习的物理成本昂贵但也因此可靠">学习的物理成本：昂贵，但也因此可靠</h3>
 <p>如果学习真的涉及“换基”，那就必须承认另一件事：</p>
 <blockquote>
 <p><strong>学习不是纯抽象活动，而是有物理成本的。</strong></p>
@@ -3705,7 +3631,8 @@ AI、把哪些原则写进法律、把哪些评价标准写进平台、学校和
 以至于它们开始反过来塑造你看世界方式的东西。</strong></p>
 </blockquote>
 <hr />
-<h3 id="内化三部曲一个可以反复做的小实验">“内化三部曲”：一个可以反复做的小实验</h3>
+<h3
+id="内化三部曲一个可以反复做的小实验">“内化三部曲”：一个可以反复做的小实验</h3>
 <p>说到这里，最自然的问题就是：</p>
 <blockquote>
 <p>“那我到底怎样，才能让这套框架真的动到自己的底层坐标？”</p>
@@ -3735,7 +3662,8 @@ AI、把哪些原则写进法律、把哪些评价标准写进平台、学校和
 </ul>
 <p>这一步的意义，是把那张原本隐形的旧地图摊开。
 不先看见旧坐标，就谈不上重排旧坐标。</p>
-<h4 id="导航拿一个真实问题做坐标测试">导航：拿一个真实问题做坐标测试</h4>
+<h4
+id="导航拿一个真实问题做坐标测试">导航：拿一个真实问题做坐标测试</h4>
 <p>第二步，是把框架真正接到生活里。</p>
 <p>挑一个你正在面对、而且短期内会影响你的问题。 只选一个，越具体越好。
 比如：</p>
@@ -3826,7 +3754,8 @@ AI、把哪些原则写进法律、把哪些评价标准写进平台、学校和
 <li>你自己决定往哪儿走，并承担走那条路的后果。</li>
 </ul>
 <hr />
-<h3 id="把这本书变成你的心智操作系统一个启程动作">把这本书变成你的“心智操作系统”：一个启程动作</h3>
+<h3
+id="把这本书变成你的心智操作系统一个启程动作">把这本书变成你的“心智操作系统”：一个启程动作</h3>
 <p>如果一切顺利，这本书在你心里，大概会经历三个阶段：</p>
 <ol type="1">
 <li>起初，它只是一本你读过的书；</li>
