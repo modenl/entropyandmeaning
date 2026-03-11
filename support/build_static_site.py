@@ -117,9 +117,11 @@ def build_page(
   <div class="scrollbar" aria-hidden="true"></div>
   <header class="site-shell">
     <div class="site-meta">
-      <a class="brand" href="{html.escape(first_page_url)}">{html.escape(brand_title)}</a>
+      <div class="brand-row">
+        <a class="brand" href="{html.escape(first_page_url)}">{html.escape(brand_title)}</a>
+        <a class="download-link" href="book.pdf" download>PDF</a>
+      </div>
       <p class="tagline">{html.escape(tagline)}</p>
-      <a class="download-link" href="book.pdf" download>下载 PDF</a>
     </div>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span class="hamburger"></span>
