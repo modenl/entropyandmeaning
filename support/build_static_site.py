@@ -119,6 +119,7 @@ def build_page(
     <div class="site-meta">
       <a class="brand" href="{html.escape(first_page_url)}">{html.escape(brand_title)}</a>
       <p class="tagline">{html.escape(tagline)}</p>
+      <a class="download-link" href="book.pdf" download>下载 PDF</a>
     </div>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span class="hamburger"></span>
