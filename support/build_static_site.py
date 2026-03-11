@@ -109,13 +109,10 @@ def build_page(
         inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
         displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],
         processEscapes: true
-      }},
-      svg: {{
-        fontCache: 'global'
       }}
     }};
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 </head>
 <body>
   <div class="scrollbar" aria-hidden="true"></div>
