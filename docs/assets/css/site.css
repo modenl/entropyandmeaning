@@ -82,6 +82,27 @@ body {
   font-size: 14px;
 }
 
+.download-link {
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 118, 110, 0.22);
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(15, 118, 110, 0.12);
+}
+
+.download-link:hover {
+  background: rgba(15, 118, 110, 0.14);
+  border-color: rgba(15, 118, 110, 0.4);
+  box-shadow: 0 10px 28px rgba(15, 118, 110, 0.16);
+}
+
 .site-nav {
   display: flex;
   flex-direction: column;
